@@ -10,14 +10,14 @@
 	import WalletConnectButton from './WalletConnectButton.svelte'
 
 	export let segment;
-	export let lwc;
+	export let xdu;
 
 	let initalize = false;
 	let balance;
 	let timer;
 	setTimeout(() => initalize = true, 500)
 
-	$: lwcInitialized = false;
+	$: xduInitialized = false;
 
 	onMount(() => {
 		timer = setTimeout(() => {
@@ -31,11 +31,11 @@
 
 
 	beforeUpdate(() => {
-		if (!lwc) {
+		if (!xdu) {
 			balance = undefined
-			lwcInitialized = false;
+			xduInitialized = false;
 		}
-		if (lwc && !lwcInitialized) lwcInitialized = true;
+		if (xdu && !xduInitialized) xduInitialized = true;
 	})
 
 </script>
@@ -91,11 +91,11 @@
 		margin-left: 4px;
 	}
 
-	.account >  p > strong.account-info{
+	/* .account >  p > strong.account-info{
 		color: var(--primary);
 		font-weight: 400;
 
-	}
+	} */
 	.address{
 		width: 93%;
 		white-space: nowrap;
@@ -221,8 +221,8 @@
 				{`${formatAccountAddress($userAccount, 8, 4)}`}
 			</a>
 		{:else}
-			{#if lwcInitialized && initalize}
-				<WalletConnectButton {lwc} />
+			{#if xduInitialized && initalize}
+				<WalletConnectButton {xdu} />
 			{/if}
 		{/if}
 

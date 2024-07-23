@@ -11,7 +11,8 @@
 
 	// Components
 	import Nav from '../components/Nav.svelte';
-	import WalletController from 'lamden_wallet_controller';
+	// import WalletController from 'lamden_wallet_controller';
+	import XianWalletUtils from "../js/xian-dapp-utils";
 	import Snackbar from "../components/Snackbar.svelte";
 	import Modal from "../components/Modal.svelte";
 	import CreatedWithLove from "../components/CreatedWithLove.svelte";
@@ -28,21 +29,20 @@
 
 	export let segment;
 
-	let lwc;
+	let xdu;
+	let xduWalletInfo;
+	let xduWalletInstalled = false;
 	let lastCurrencyCheck = new Date()
 	let txResultsHandler = TransactionResultHandler(createSnack)
 	let socket = socketservice.start()
 
-	onMount(() => {
-		lwc = new WalletController(approvalRequest)
-		lwc.events.on('newInfo', handleWalletInfo)
-		lwc.events.on('txStatus', handleTxResults)
-
-		lwc.walletIsInstalled()
-				.then(installed => {
-					if (installed) walletInstalled.set('installed')
-					else walletInstalled.set('not-installed')
-				})
+	onMount(async() => {
+		XianWalletUtils.init('https://testnet.xian.org');
+		xdu = XianWalletUtils;
+		xduWalletInstalled = true;
+		const xduWalletInfo = await xdu.requestWalletInfo().catch(()=>xduWalletInstalled = false);
+		handleWalletInfo(xduWalletInfo);
+		console.log("xduWalletInfo: ", xduWalletInfo)		
 
 		document.addEventListener("visibilitychange", setTabActive);
 		refreshCurrencyBalance()
@@ -52,15 +52,13 @@
 		socket.on('')
 
 		return () => {
-			lwc.events.removeListener(handleWalletInfo)
-			lwc.events.removeListener(handleTxResults)
 			document.removeEventListener("visibilitychange", setTabActive);
 		}
 	})
 
 	beforeUpdate(() => {
-		if (lwc) {
-			if (!$userAccount && lwc.walletAddress) userAccount.set(lwc.walletAddress)
+		if (xdu) {
+			if (!$userAccount && xduWalletInfo.address) userAccount.set(xduWalletInfo.address)
 		}
 		if (!$stampRatio) fetchStampRatio();
 	})
@@ -73,10 +71,12 @@
 
 	setContext('app_functions', {
 		sendTransaction: (transaction, callback) => sendTransaction(transaction, callback),
-		lwc: () => {
-			return lwc
+		xdu: () => {
+			return xdu
 		},
-		socket
+		socket,
+		xduWalletInstalled,
+		xduWalletInfo
 	})
 
 	const sendTransaction = (transaction, callback) => {
@@ -97,7 +97,7 @@
             })
 		}else{
 			transaction.stampLimit = stampsToSendTx
-			lwc.sendTransaction(transaction, (txResult) => txResultsHandler.parseTxResult(txResult.data, callback))
+			xdu.sendTransaction(transaction, (txResult) => txResultsHandler.parseTxResult(txResult.data, callback))
 		}
 	}
 
@@ -106,8 +106,8 @@
 	}
 
 	const handleWalletInfo = (info) => {
-		autoTx.set(lwc.autoTransactions)
-		userAccount.set(lwc.walletAddress)
+		// autoTx.set(xdu.autoTransactions)
+		userAccount.set(xduWalletInfo.address)
 		walletInfo.set(info)
 	}
 
@@ -115,7 +115,7 @@
 	const handleTxResults = (results) => {
 		let errors = processTxResults(results)
 		if (errors.length > 0) {
-			if (errors[0].includes('have not been approved for')) lwc.sendConnection(approvalRequest, true)
+			if (errors[0].includes('have not been approved for')) xdu.sendConnection(approvalRequest, true)
 		}
 	}
 
@@ -167,7 +167,7 @@
 	<Modal/>
 {/if}
 <Snackbar />
-<Nav {segment} {lwc}/>
+<Nav {segment} {xdu}/>
 <main>
 	<slot></slot>
 </main>

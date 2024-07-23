@@ -1,7 +1,9 @@
 <script>
     import { onMount } from 'svelte'
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, getContext } from 'svelte';
 	const dispatch = createEventDispatcher();
+
+    const { xduWalletInstalled, xduWalletInfo } = getContext('app_functions')
 
 	export let lwc ;
 
@@ -13,18 +15,12 @@
 
     onMount(() => {
         setState()
-		lwc.events.on('newInfo', setState)
-        lwc.events.on('installed', (res) => installed = res)
-
-		return () => {
-			lwc.events.removeListener(setState)
-		}
 	})
 
     const setState = () => {
-        installed = lwc.installed
-        connected = lwc.approved
-        locked = lwc.locked
+        installed = xduWalletInstalled
+        connected = xduWalletInfo.address;
+        locked = xduWalletInfo.locked
     }
 
     const openLink = (url) => {

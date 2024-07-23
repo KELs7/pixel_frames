@@ -33,6 +33,11 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
 
+	if (event.request.url.startsWith('chrome-extension://')) {
+		// Don't attempt to cache chrome-extension resources
+		return;
+	}
+
 	if (event.request.method !== 'GET' || event.request.headers.has('range')) return;
 
 	const url = new URL(event.request.url);

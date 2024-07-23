@@ -35,6 +35,9 @@ importers:
       twitter-api-client:
         specifier: ^1.3.8
         version: 1.6.1
+      types-validate-assert:
+        specifier: ^1.0.1
+        version: 1.0.1
 
 packages:
 
@@ -301,6 +304,9 @@ packages:
 
   twitter-api-client@1.6.1:
     resolution: {integrity: sha512-VkVDJzX0i6FC7CyZeeJluU1+bQ+8o5pwawgEjm7N5byaXF/cD9T4fzSzYX8y3ZhbwmkeUslYHQkquzQ2vigTmw==}
+
+  types-validate-assert@1.0.1:
+    resolution: {integrity: sha512-SyTxYwMbxwMtSxmkjbXaWAA+kHWMrZLg4Y72osVwXy3u8LjKvDpye6zrcR4ifj0V0pE7Qa/H0uH9LtmqL0NLew==}
 
   undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
@@ -621,6 +627,8 @@ snapshots:
     dependencies:
       oauth: 0.9.15
       object-sizeof: 1.6.3
+
+  types-validate-assert@1.0.1: {}
 
   undici-types@5.26.5: {}
 

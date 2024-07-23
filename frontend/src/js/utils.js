@@ -158,13 +158,15 @@ export const getCurrentKeyValue = async (contractName, variableName, key) => {
     const result = await fetch(`./getkey-${contractName}.${variableName}:${key}.json`)
     try {
         let json = await result.json();
-        value = json.value
+        value = json?.result?.response?.value
     }catch(e){
         return null
     }
-    if (value === null || typeof value === 'undefined') return value
-    if (typeof value.__fixed__ !== 'undefined') return toBigNumber(value.__fixed__)
-    return value
+    if (value === null || typeof value === 'undefined') {
+        return value
+    } else {
+        return atob(value);
+    }
 }
 
 export const replaceAll = (string, char, replace) => {

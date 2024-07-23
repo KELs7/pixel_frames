@@ -3,10 +3,15 @@ export async function get(req, res, next) {
 
     let results = await global.blockservice.getCurrentKeyValue('currency', 'balances', vk)
 
+    results = results?.result?.response
+
     let { value } = results
 
-    if (!value) value = "0"
-    if (value.__fixed__) value = value.__fixed__
+    if (!value) {
+        value = "0"
+    } else{
+        value = atob(value);
+    }
 
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify({value}));

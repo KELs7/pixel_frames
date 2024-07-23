@@ -6,8 +6,8 @@ export const getBlockService = (url, port) => {
 
     async function getCurrentKeyValue(contractName, variableName, key){
         try{
-            let endpoint = 'current/one'
-            let res = await axios(`${fullURL}/${endpoint}/${contractName}/${variableName}/${key}`)
+            let endpoint = 'abci_query'
+            let res = await axios(`${fullURL}/${endpoint}?path=%22/get/${contractName}.${variableName}:${key}%22`)
             return res.data
         }catch(e){
             return e

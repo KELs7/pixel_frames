@@ -5,7 +5,7 @@
 			this.fetch(`./mostliked.json?limit=54`).then(res => res.json()),
 			this.fetch(`./recent_things.json?limit=10`).then(res => res.json()),
 			this.fetch(`./forsale.json?limit=10`).then(res => res.json()),
-			this.fetch(`./getArtistEvent.json?event=artist`).then(res => res.json())
+			// this.fetch(`./getArtistEvent.json?event=artist`).then(res => res.json())
 		])
 		let eventInfo = data[3]
 		try{

@@ -3,7 +3,8 @@
 
 	// Misc
 	import { frames, showModal, stampRatio, currency } from '../js/stores.js'
-	import { createSnack, closeModel, isLamdenKey, toBigNumber, stringToFixed } from '../js/utils.js'
+	import { isLamdenKey, toBigNumber, stringToFixed } from '../js/utils.js'
+	import { createSnack, closeModel } from '../js/store-utils.js'
 	import { config, stampLimits } from '../js/config.js';
 
     // Components

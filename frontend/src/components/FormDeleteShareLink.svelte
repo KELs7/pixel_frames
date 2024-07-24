@@ -6,7 +6,7 @@
 
 	// Misc
 	import { showModal } from '../js/stores.js'
-	import { createSnack, closeModel, isLamdenKey } from '../js/utils.js'
+	import { createSnack, closeModel } from '../js/store-utils.js'
 	import { config } from '../js/config.js';
 
     const { sendTransaction } = getContext('app_functions')

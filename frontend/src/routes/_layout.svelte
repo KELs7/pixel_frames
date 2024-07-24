@@ -20,8 +20,9 @@
 	// Misc
 	import {approvalRequest} from '../js/wallet_approval';
 	import { config, stampLimits } from '../js/config.js';
-	import { walletInstalled, walletInfo, showModal, userAccount, stampRatio, currency, autoTx, tabHidden, tauPrice, approvalAmount } from '../js/stores.js';
-	import {processTxResults, createSnack, refreshTAUBalance, checkForApproval, stringToFixed, toBigNumber} from '../js/utils.js';
+	import { walletInfo, showModal, userAccount, stampRatio, currency, tabHidden, tauPrice} from '../js/stores.js';
+	import {stringToFixed, toBigNumber} from '../js/utils.js';
+	import {processTxResults, createSnack, refreshTAUBalance, checkForApproval} from '../js/store-utils.js';
 	import { TransactionResultHandler } from '../js/transaction_result_handler'
 	import * as socketservice from '../js/socketservice'
 

@@ -4,7 +4,8 @@
 
     //MISC
 	import { frames, frameSpeed, showModal, frameStore, activeFrame } from '../js/stores.js'
-	import { serializeFrames, createSnack, nameTaken, closeModel } from '../js/utils.js'
+	import { serializeFrames, nameTaken } from '../js/utils.js'
+	import { createSnack, closeModel } from '../js/store-utils.js'
 	import { config, stampLimits } from '../js/config.js';
 
     // Components

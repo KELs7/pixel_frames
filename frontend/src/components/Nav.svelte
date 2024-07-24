@@ -1,9 +1,9 @@
 <script>
-	import { walletInstalled, userAccount, currency, approvalAmount, stampRatio, autoTx, walletInfo } from '../js/stores'
+	import { userAccount, currency, walletInfo } from '../js/stores'
 	import { beforeUpdate, onMount } from 'svelte'
-	import { goto } from '@sapper/app';
 
-	import { refreshTAUBalance, checkForApproval, formatAccountAddress, stringToFixed } from '../js/utils.js'
+	import { formatAccountAddress, stringToFixed } from '../js/utils.js'
+	import {  checkForApproval, refreshTAUBalance} from '../js/store-utils.js'
 	import { config } from '../js/config'
 
 	import Title from './Title.svelte'
@@ -21,11 +21,11 @@
 
 	onMount(() => {
 		timer = setTimeout(() => {
-			if ($userAccount && !balance) {
-				balance = refreshTAUBalance()
-				checkForApproval(config.masterContract)
-				timer = null;
-			}
+		if ($userAccount && !balance) {
+			balance = refreshTAUBalance()
+			checkForApproval(config.masterContract)
+			timer = null;
+		}
 		}, 1000)
 	})
 

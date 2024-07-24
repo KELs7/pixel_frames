@@ -1,5 +1,3 @@
-import {createSnack} from "./utils";
-
 export const TransactionResultHandler = (createSnack) => {
 
 	function parseTxResult(txResults, callback = undefined) {

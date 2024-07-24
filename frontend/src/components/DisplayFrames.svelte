@@ -1,11 +1,11 @@
 <script>
     import {getContext, onMount, createEventDispatcher} from 'svelte'
-    import {goto} from '@sapper/app';
 
     // Misc
     import {userAccount, autoTx, auctions} from '../js/stores.js'
-    import {createSnack, alreadyLiked, createWatermark, formatAccountAddress} from '../js/utils.js'
-    import { config, featureLocks } from '../js/config.js';
+    import { createWatermark } from '../js/utils.js'
+    import {alreadyLiked, createSnack} from '../js/store-utils.js'
+    import { config } from '../js/config.js';
 
     // Components
     import Frame from './Frame.svelte'

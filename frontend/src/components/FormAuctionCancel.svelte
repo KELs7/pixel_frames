@@ -3,7 +3,8 @@
 
 	// Misc
 	import {  showModal, currency, userAccount, stampRatio } from '../js/stores.js'
-	import { createSnack, closeModel, toBigNumber, stringToFixed } from '../js/utils.js'
+	import { toBigNumber, stringToFixed } from '../js/utils.js'
+	import { createSnack, closeModel } from '../js/store-utils.js'
 	import { config, stampLimits } from '../js/config.js'
 
 	// Icons

@@ -2,7 +2,7 @@
     import { getContext, onMount } from 'svelte'
 
     // Misc
-    import { alreadyLiked } from '../js/utils.js'
+    import { alreadyLiked } from '../js/store-utils.js'
     import { config } from '../js/config.js';
     import { userAccount } from '../js/stores.js'
 

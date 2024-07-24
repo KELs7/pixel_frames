@@ -2,8 +2,10 @@
     import { getContext } from 'svelte'
 
 	// Misc
-	import { frames, showModal, currency, userAccount, approvalAmount, stampRatio } from '../js/stores.js'
-	import { createSnack, checkForApproval, closeModel, toBigNumber, stringToFixed } from '../js/utils.js'
+	import { showModal, currency, approvalAmount, stampRatio } from '../js/stores.js'
+	import { toBigNumber, stringToFixed } from '../js/utils.js'
+	import { createSnack, checkForApproval, closeModel } from '../js/store-utils.js'
+	
 	import { config, stampLimits } from '../js/config.js'
 
 	// Components

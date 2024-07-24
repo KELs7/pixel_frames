@@ -1,7 +1,8 @@
 <script>
     import {beforeUpdate, getContext, onMount} from "svelte";
     import {userAccount, auctions} from "../js/stores";
-    import {createSnack, decodeFrames, formatAccountAddress, stringToFixed} from "../js/utils";
+    import {decodeFrames, formatAccountAddress, stringToFixed} from "../js/utils";
+    import {createSnack} from "../js/store-utils";
     import {config} from "../js/config";
 
     const { socket } = getContext('app_functions')

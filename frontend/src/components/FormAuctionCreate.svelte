@@ -3,14 +3,8 @@
 
 	// Misc
 	import {  showModal, currency, stampRatio } from '../js/stores.js'
-	import {
-		createSnack,
-		closeModel,
-		toBigNumber,
-		stringToFixed,
-		toDateTime,
-		checkForAuctionApproval
-	} from '../js/utils.js'
+	import {toBigNumber, stringToFixed, toDateTime} from '../js/utils.js'
+	import {createSnack, checkForAuctionApproval, closeModel} from '../js/store-utils.js'
 	import { config, stampLimits } from '../js/config.js'
 
 	// Components

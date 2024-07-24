@@ -1,11 +1,11 @@
 <script>
     import {getContext, onMount, tick} from 'svelte';
-    import {goto} from '@sapper/app';
 
     // Misc
     import {userAccount, showModal} from '../js/stores.js';
     import { config } from '../js/config.js';
-    import {createSnack, createWatermark, alreadyLiked, formatAccountAddress} from '../js/utils.js';
+    import {createWatermark, formatAccountAddress} from '../js/utils.js';
+    import {alreadyLiked, createSnack} from '../js/store-utils.js'
 
     // Components
     import FormGive from './FormGive.svelte'

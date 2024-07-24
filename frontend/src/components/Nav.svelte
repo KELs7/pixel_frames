@@ -15,7 +15,7 @@
 	let initalize = false;
 	let balance;
 	let timer;
-	setTimeout(() => initalize = true, 500)
+	setTimeout(() => initalize = true, 300)
 
 	$: xduInitialized = false;
 

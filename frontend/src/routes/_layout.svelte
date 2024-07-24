@@ -30,7 +30,6 @@
 	export let segment;
 
 	let xdu;
-	let xduWalletInfo;
 	let xduWalletInstalled = false;
 	let lastCurrencyCheck = new Date()
 	let txResultsHandler = TransactionResultHandler(createSnack)
@@ -41,8 +40,8 @@
 		xdu = XianWalletUtils;
 		xduWalletInstalled = true;
 		const xduWalletInfo = await xdu.requestWalletInfo().catch(()=>xduWalletInstalled = false);
+		
 		handleWalletInfo(xduWalletInfo);
-		console.log("xduWalletInfo: ", xduWalletInfo)		
 
 		document.addEventListener("visibilitychange", setTabActive);
 		refreshCurrencyBalance()
@@ -57,9 +56,9 @@
 	})
 
 	beforeUpdate(() => {
-		if (xdu) {
-			if (!$userAccount && xduWalletInfo.address) userAccount.set(xduWalletInfo.address)
-		}
+		// if (xdu) {
+		// 	if (!$userAccount && xduWalletInfo.address) userAccount.set(xduWalletInfo.address)
+		// }
 		if (!$stampRatio) fetchStampRatio();
 	})
 
@@ -75,8 +74,9 @@
 			return xdu
 		},
 		socket,
-		xduWalletInstalled,
-		xduWalletInfo
+		isInstalled: ()=>{
+			return xduWalletInstalled
+		},
 	})
 
 	const sendTransaction = (transaction, callback) => {
@@ -107,7 +107,7 @@
 
 	const handleWalletInfo = (info) => {
 		// autoTx.set(xdu.autoTransactions)
-		userAccount.set(xduWalletInfo.address)
+		userAccount.set(info.address)
 		walletInfo.set(info)
 	}
 

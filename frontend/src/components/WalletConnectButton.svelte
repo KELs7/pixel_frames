@@ -1,35 +1,14 @@
 <script>
-    import { onMount } from 'svelte'
-	import { createEventDispatcher, getContext } from 'svelte';
-	const dispatch = createEventDispatcher();
+	import { getContext } from 'svelte';
+	import { walletInfo } from '../js/stores.js';
 
-    const { xduWalletInstalled, xduWalletInfo } = getContext('app_functions')
+    export let xdu;
 
-	export let lwc ;
+    const { isInstalled } = getContext('app_functions')
 
-    $: installed = false;
-    $: connected = false;
-    $: locked = false;
-
-    let storeURL = "https://chrome.google.com/webstore/detail/lamden-wallet-browser-ext/fhfffofbcgbjjojdnpcfompojdjjhdim"
-
-    onMount(() => {
-        setState()
-	})
-
-    const setState = () => {
-        installed = xduWalletInstalled
-        connected = xduWalletInfo.address;
-        locked = xduWalletInfo.locked
-    }
-
-    const openLink = (url) => {
-        if (!installed) window.open(storeURL, '_blank');
-	}
+    $: installed = isInstalled();
 
 </script>
-
-
 
 {#if !installed}
     <a href="https://chrome.google.com/webstore/detail/lamden-wallet-browser-ext/fhfffofbcgbjjojdnpcfompojdjjhdim"
@@ -37,16 +16,11 @@
        rel="noopener noreferrer"
        class="button">Install Wallet</a>
 {:else}
-     {#if locked}
+     {#if $walletInfo?.locked ?? true}
         <button class="button" disabled={true}>Wallet Locked</button>
     {:else}
-         {#if !connected}
-            <button class="button" on:click={() => lwc.sendConnection()}> Connect to Wallet</button>
+         {#if !$walletInfo?.address ?? false}
+            <button class="button" on:click={() => xdu.sendConnection()}> Connect to Wallet</button>
          {/if}
     {/if}
 {/if}
-
-
-
-
-

@@ -38,9 +38,6 @@ importers:
       lamden-js:
         specifier: ^1.6.1
         version: 1.21.0
-      lamden_wallet_controller:
-        specifier: ^0.6.3
-        version: 0.6.5
       mongoose:
         specifier: ^5.12.2
         version: 5.13.22
@@ -1471,9 +1468,6 @@ packages:
 
   lamden-js@1.21.0:
     resolution: {integrity: sha512-zn+E3/Os8CvvkYNYUu6h7rpnZz9HcZzsg+RwIsWUuDzdhczT0GGEJdaS1UgvHolr4FAR24GHv7H1Wh6Zcx3KZw==}
-
-  lamden_wallet_controller@0.6.5:
-    resolution: {integrity: sha512-fVVOOTOp8UbGkn7qfeZTA5yKD99dpJmsWsVlwCxfZkYmrWFRgj4Gvzr4E37p8DUXuDooG8REvAcXebh51WdTPA==}
 
   load-json-file@4.0.0:
     resolution: {integrity: sha512-Kx8hMakjX03tiGTLAIdJ+lL0htKnXjEZN6hk/tozf/WOuYGdZBJrZ+rCJRbVCugsjB3jMLn9746NsQIf5VjBMw==}
@@ -3804,8 +3798,6 @@ snapshots:
       types-validate-assert: 1.0.1
     transitivePeerDependencies:
       - encoding
-
-  lamden_wallet_controller@0.6.5: {}
 
   load-json-file@4.0.0:
     dependencies:

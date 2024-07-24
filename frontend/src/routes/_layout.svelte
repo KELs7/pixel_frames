@@ -11,7 +11,6 @@
 
 	// Components
 	import Nav from '../components/Nav.svelte';
-	// import WalletController from 'lamden_wallet_controller';
 	import XianWalletUtils from "../js/xian-dapp-utils";
 	import Snackbar from "../components/Snackbar.svelte";
 	import Modal from "../components/Modal.svelte";

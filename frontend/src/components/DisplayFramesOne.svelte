@@ -2,10 +2,10 @@
     import {getContext, onMount, tick} from 'svelte';
 
     // Misc
-    import {userAccount, showModal} from '../js/stores.js';
-    import { config } from '../js/config.js';
-    import {createWatermark, formatAccountAddress} from '../js/utils.js';
-    import {alreadyLiked, createSnack} from '../js/store-utils.js'
+    import {userAccount, showModal} from '$lib/js/stores.js';
+    import { config } from '$lib/js/config.js';
+    import {createWatermark, formatAccountAddress} from '$lib/js/utils.js';
+    import {alreadyLiked, createSnack} from '$lib/js/store-utils.js'
 
     // Components
     import FormGive from './FormGive.svelte'

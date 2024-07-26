@@ -1,7 +1,7 @@
 <script>
     import { tick }  from 'svelte'
-    import { frames, currentFrame, frameStore, activeFrame } from '../js/stores'
-    import { config } from '../js/config'
+    import { frames, currentFrame, frameStore, activeFrame } from '$lib/js/stores'
+    import { config } from '$lib/js/config'
 
     const addFrame = async () => {
         if ($frames.length < config.totalFrames + 1) {

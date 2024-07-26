@@ -3,8 +3,8 @@
     const dispatch = createEventDispatcher();
 
     // MISC
-    import { currentColor, brushSize } from '../js/stores'
-    import { letter_to_color } from '../js/utils.js'
+    import { currentColor, brushSize } from '$lib/js/stores'
+    import { letter_to_color } from '$lib/js/utils.js'
 
     export let pixel
     export let index

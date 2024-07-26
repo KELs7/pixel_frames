@@ -1,5 +1,5 @@
 <script>
-    import { frameSpeed, frameStore, activeFrame } from '../js/stores.js'
+    import { frameSpeed, frameStore, activeFrame } from '$lib/js/stores.js'
     import { onMount } from 'svelte'
 
     $: speed = $frameSpeed

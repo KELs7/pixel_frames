@@ -2,7 +2,7 @@
 
 <script>
 	import Preview from './Preview.svelte';
-	import { formatThings  } from "../js/utils";
+	import { formatThings  } from "$lib/js/utils";
 
 	export let mostLiked;
 	let sending = false;

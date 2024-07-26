@@ -1,5 +1,5 @@
 <script>
-    import { currentTool } from '../js/stores'
+    import { currentTool } from '$lib/js/stores'
 
     const handleClick = () => {
         currentTool.set('paint-1')

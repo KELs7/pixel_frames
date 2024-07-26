@@ -1,7 +1,7 @@
 <script>
-    import { frames, currentFrame, totalPixels } from '../js/stores'
-    import { emptyFrame } from '../js/utils'
-    import { config } from '../js/config'
+    import { frames, currentFrame, totalPixels } from '$lib/js/stores'
+    import { emptyFrame } from '$lib/js/utils'
+    import { config } from '$lib/js/config'
     import FrameCanvas from './FrameCanvas.svelte'
     import AddFrame from './AddFrame.svelte'
     import MoveFrameButton from './MoveFrameButton.svelte'

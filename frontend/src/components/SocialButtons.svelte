@@ -1,6 +1,6 @@
 <script>
     import { Email, HackerNews, Reddit, LinkedIn, Pinterest, Telegram, Tumblr, Vk, WhatsApp, Xing, Facebook, Twitter } from 'svelte-share-buttons-component';
-    import { config } from '../js/config.js'
+    import { config } from '$lib/js/config.js'
 
     export let thingInfo
 

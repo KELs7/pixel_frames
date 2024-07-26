@@ -1,5 +1,5 @@
 <script>
-    import { brushSize, currentTool } from '../js/stores'
+    import { brushSize, currentTool } from '$lib/js/stores'
 
     $: size = $brushSize
 

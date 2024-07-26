@@ -1,6 +1,6 @@
 <script>
-    import { currentColor } from '../js/stores'
-    import { color_to_letter, letter_to_color } from '../js/utils.js'
+    import { currentColor } from '$lib/js/stores'
+    import { color_to_letter, letter_to_color } from '$lib/js/utils.js'
 
     $: pallet = makePallet()
 

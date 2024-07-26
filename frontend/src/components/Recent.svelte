@@ -1,14 +1,12 @@
-
-
 <script>
 	import { onMount, beforeUpdate } from 'svelte'
 	import { scale } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 
 	import DisplayFrames from './DisplayFrames.svelte';
-	import { formatThings, updateInfo, dedupArray } from "../js/utils";
-	import { config } from '../js/config.js'
-	import { userAccount } from '../js/stores.js'
+	import { formatThings, updateInfo, dedupArray } from "$lib/js/utils";
+	import { config } from '$lib/js/config.js'
+	import { userAccount } from '$lib/js/stores.js'
 
 	export let recent;
 	export let preview = false;
@@ -33,7 +31,7 @@
     	if (count === formatted.length) return
     	if (sending) return;
 		sending = true;
-		const res = await fetch(`./recent_things.json?limit=25&offset=${formatted.length}`)
+		const res = await fetch(`/api/recent_things?limit=25&offset=${formatted.length}`)
 		let things = await res.json()
 		if (!things.data) things.data = []
 		sending = false;

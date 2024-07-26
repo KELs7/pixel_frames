@@ -1,7 +1,7 @@
 <script>
     // MISC
-    import { currentFrame, frameStore, activeFrame } from '../js/stores'
-    import { newPixelFrame } from '../js/defaults'
+    import { currentFrame, frameStore, activeFrame } from '$lib/js/stores'
+    import { newPixelFrame } from '$lib/js/defaults'
 
     const reset = () => {
         let wipe = confirm("Wipe project and start again?")

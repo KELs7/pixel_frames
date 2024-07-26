@@ -2,10 +2,10 @@
     import { getContext, onMount } from 'svelte'
 
 	// Misc
-	import {  showModal, currency, stampRatio } from '../js/stores.js'
-	import {toBigNumber, stringToFixed, toDateTime} from '../js/utils.js'
-	import {createSnack, checkForAuctionApproval, closeModel} from '../js/store-utils.js'
-	import { config, stampLimits } from '../js/config.js'
+	import {  showModal, currency, stampRatio } from '$lib/js/stores.js'
+	import {toBigNumber, stringToFixed, toDateTime} from '$lib/js/utils.js'
+	import {createSnack, checkForAuctionApproval, closeModel} from '$lib/js/store-utils.js'
+	import { config, stampLimits } from '$lib/js/config.js'
 
 	// Components
 	import DatePicker from "@beyonk/svelte-datepicker/src/components/DatePicker.svelte";

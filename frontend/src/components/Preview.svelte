@@ -1,8 +1,8 @@
 <script>
     import { onMount } from 'svelte'
     import FrameCanvas from './FrameCanvas.svelte'
-    import { frameSpeed, userAccount } from '../js/stores.js'
-    import { isEmptyFrame, createWatermark } from '../js/utils.js'
+    import { frameSpeed, userAccount } from '$lib/js/stores.js'
+    import { isEmptyFrame, createWatermark } from '$lib/js/utils.js'
 
     export let frames;
     export let thingInfo = false;

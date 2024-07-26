@@ -2,7 +2,7 @@
     import { onMount } from 'svelte'
 
     // Misc
-    import { getTimeDelta } from '../js/utils'
+    import { getTimeDelta } from '$lib/js/utils'
 
     export let auctionInfo
 

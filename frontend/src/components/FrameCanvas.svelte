@@ -1,7 +1,7 @@
 <script>
     import { afterUpdate } from 'svelte'
-    import { drawFrame } from '../js/utils.js'
-    import { config } from '../js/config.js'
+    import { drawFrame } from '$lib/js/utils.js'
+    import { config } from '$lib/js/config.js'
 
     export let id = parseInt(Math.random() * 10000);
     export let watermark = undefined;

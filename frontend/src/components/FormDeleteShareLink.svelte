@@ -5,9 +5,9 @@
 	import InfoIcon from '../../static/img/info-filled.svg'
 
 	// Misc
-	import { showModal } from '../js/stores.js'
-	import { createSnack, closeModel } from '../js/store-utils.js'
-	import { config } from '../js/config.js';
+	import { showModal } from '$lib/js/stores.js'
+	import { createSnack, closeModel } from '$lib/js/store-utils.js'
+	import { config } from '$lib/js/config.js';
 
     const { sendTransaction } = getContext('app_functions')
 
@@ -19,7 +19,7 @@
 
 
     const proveOwnership = async () => {
-		let authCodeInfo = await fetch(`./get-code.json?uid=${$showModal.modalData.thingInfo.uid}`).then(res => res.json())
+		let authCodeInfo = await fetch(`/api/get-code?uid=${$showModal.modalData.thingInfo.uid}`).then(res => res.json())
 		if (!authCodeInfo || !authCodeInfo.code) {
 			createSnack({
 				title: `Error`,
@@ -69,7 +69,7 @@
     	let checks = 0;
     	const check = async () => {
     		checks = checks + 1
-    		let res = await fetch(`./delete_share_link.json?uid=${uid}&challenge=${challenge}`).then(res => res.json())
+    		let res = await fetch(`/api/delete_share_link?uid=${uid}&challenge=${challenge}`).then(res => res.json())
 			if (res.deleted) return resolver(res)
 			if (res.error === "Challenge not accepted.") return resolver(res)
 			if (res.error === "Unknown Error. Code was not deleted!") return resolver(res)

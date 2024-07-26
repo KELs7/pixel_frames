@@ -1,15 +1,15 @@
 <script>
-	import { userAccount, currency, walletInfo } from '../js/stores'
+	import { userAccount, currency, walletInfo } from '$lib/js/stores'
 	import { beforeUpdate, onMount } from 'svelte'
+	import { page } from '$app/stores'
 
-	import { formatAccountAddress, stringToFixed } from '../js/utils.js'
-	import {  checkForApproval, refreshTAUBalance} from '../js/store-utils.js'
-	import { config } from '../js/config'
+	import { formatAccountAddress, stringToFixed } from '$lib/js/utils.js'
+	import {  checkForApproval, refreshTAUBalance} from '$lib/js/store-utils.js'
+	import { config } from '$lib/js/config'
 
 	import Title from './Title.svelte'
 	import WalletConnectButton from './WalletConnectButton.svelte'
 
-	export let segment;
 	export let xdu;
 
 	let initalize = false;
@@ -200,12 +200,12 @@
 	</a>
 	<div class="links desktop">
 		<ul>
-			<li><a rel=prefetch aria-current="{segment === 'create' ? 'page' : undefined}" href="create">create</a></li>
+			<li><a rel=prefetch aria-current="{$page.url.pathname === 'create' ? 'page' : undefined}" href="create">create</a></li>
 			{#if $userAccount !== ""}
-				<li><a rel=prefetch aria-current="{segment === 'owned' ? 'page' : undefined}" href={'owned/' + $userAccount}>owned</a></li>
+				<li><a rel=prefetch aria-current="{$page.url.pathname === 'owned' ? 'page' : undefined}" href={'owned/' + $userAccount}>owned</a></li>
 			{/if}
-			<li><a rel=prefetch aria-current="{segment === 'recent' ? 'page' : undefined}" href="recent">recent</a></li>
-			<li><a rel=prefetch aria-current="{segment === 'forsale' ? 'page' : undefined}" href="forsale">for sale</a></li>
+			<li><a rel=prefetch aria-current="{$page.url.pathname === 'recent' ? 'page' : undefined}" href="recent">recent</a></li>
+			<li><a rel=prefetch aria-current="{$page.url.pathname === 'forsale' ? 'page' : undefined}" href="forsale">for sale</a></li>
 			<li><a href="https://docs.pixelwhale.io" target="_blank" rel="noopener noreferrer">docs</a></li>
 		</ul>
 	</div>

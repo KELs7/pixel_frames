@@ -1,6 +1,6 @@
 <script>
     // Misc
-    import { copyToClipboard } from '../js/utils'
+    import { copyToClipboard } from '$lib/js/utils'
 
     export let width = "20px"
     export let color = "var(--primary)"

@@ -1,6 +1,5 @@
 //import blockserviceAPI from '../../blockserviceAPI/blockservice.mjs'
 import io_client from 'socket.io-client'
-import { config } from "./js/config";
 
 export const start = (io_server, database_service_url='http://localhost', database_service_port=3536) => {
     let databaseSocket = io_client(`${database_service_url}:${database_service_port}`);

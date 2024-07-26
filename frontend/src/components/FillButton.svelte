@@ -3,7 +3,7 @@
     import PaintBucket from '../../static/img/paint_bucket.svg'
 
     // MISC
-    import { currentTool } from '../js/stores'
+    import { currentTool } from '$lib/js/stores'
 
     const handleClick = () => {
         currentTool.set('fill')

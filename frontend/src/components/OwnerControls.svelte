@@ -5,7 +5,7 @@
     import CopyButton from './CopyButton.svelte'
 
     // Misc
-    import { userAccount, showModal } from '../js/stores'
+    import { userAccount, showModal } from '$lib/js/stores'
 
     export let thingInfo
     export let owner

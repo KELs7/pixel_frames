@@ -2,7 +2,7 @@
     import { onMount } from 'svelte'
     import { scale, fly } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
-    import { showModal } from '../js/stores.js'
+    import { showModal } from '$lib/js/stores.js'
 
     $: buttons = []
 

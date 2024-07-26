@@ -4,10 +4,10 @@
 	import { quintOut } from 'svelte/easing';
 
     // MISC
-    import { currentColor, frames, currentFrame, frameStore, activeFrame, currentTool, brushSize } from '../js/stores'
-    import { indexToPos } from '../js/utils'
-    import { config } from '../js/config'
-    import { brushSizeMap } from '../js/defaults'
+    import { currentColor, frames, currentFrame, frameStore, activeFrame, currentTool, brushSize } from '$lib/js/stores'
+    import { indexToPos } from '$lib/js/utils'
+    import { config } from '$lib/js/config'
+    import { brushSizeMap } from '$lib/js/defaults'
 
     // Components
     import Pixel from './Pixel.svelte'

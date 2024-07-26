@@ -1,9 +1,9 @@
 <script>
     import {beforeUpdate, getContext, onMount} from "svelte";
-    import {userAccount, auctions} from "../js/stores";
-    import {decodeFrames, formatAccountAddress, stringToFixed} from "../js/utils";
-    import {createSnack} from "../js/store-utils";
-    import {config} from "../js/config";
+    import {userAccount, auctions} from "$lib/js/stores";
+    import {decodeFrames, formatAccountAddress, stringToFixed} from "$lib/js/utils";
+    import {createSnack} from "$lib/js/store-utils";
+    import {config} from "$lib/js/config";
 
     const { socket } = getContext('app_functions')
 
@@ -42,7 +42,7 @@
     }
 
     async function getActiveAuctions(){
-        const res = await fetch(`./auctionsAll.json?limit=1000000`)
+        const res = await fetch(`/api/auctionsAll?limit=1000000`)
 		let json = await res.json()
 
 		if (!json) return []
@@ -51,7 +51,7 @@
     }
 
     async function getThingInfo(uid){
-        const res = await fetch(`./frames/${uid}.json`)
+        const res = await fetch(`/api/frames/${uid}`)
 		let json = await res.json()
 	    return json.thingInfo
     }

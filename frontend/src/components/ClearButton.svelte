@@ -1,6 +1,6 @@
 <script>
-    import { currentFrame, frameStore, activeFrame } from '../js/stores'
-    import { newPixelBoard } from '../js/defaults.js'
+    import { currentFrame, frameStore, activeFrame } from '$lib/js/stores'
+    import { newPixelBoard } from '$lib/js/defaults.js'
 
     const handleClick = () => {
         let wipe = confirm("Wipe current frame?")

@@ -1,12 +1,12 @@
 <script>
     import { getContext } from 'svelte'
-	import { goto } from '@sapper/app';
+	import { goto } from '$app/navigation';
 
     //MISC
-	import { frames, frameSpeed, showModal, frameStore, activeFrame } from '../js/stores.js'
-	import { serializeFrames, nameTaken } from '../js/utils.js'
-	import { createSnack, closeModel } from '../js/store-utils.js'
-	import { config, stampLimits } from '../js/config.js';
+	import { frames, frameSpeed, showModal, frameStore, activeFrame } from '$lib/js/stores.js'
+	import { serializeFrames, nameTaken } from '$lib/js/utils.js'
+	import { createSnack, closeModel } from '$lib/js/store-utils.js'
+	import { config, stampLimits } from '$lib/js/config.js';
 
     // Components
 	import Preview from './Preview.svelte'
@@ -80,7 +80,7 @@
     	const checkForThing = async () => {
     		if (window.location.href !== location) return
     		checks = checks + 1
-    		let res = await fetch(`./frames/${uid}.json`).then(res => res.json())
+    		let res = await fetch(`/api/frames/${uid}`).then(res => res.json())
 			if (res.thingInfo === null) {
 				if (checks < maxChecks)setTimeout(checkForThing, 1000)
 			}else {

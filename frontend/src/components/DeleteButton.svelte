@@ -1,6 +1,6 @@
 <script>
-    import { currentFrame, frameStore, activeFrame } from '../js/stores'
-    import { newPixelFrame } from '../js/defaults'
+    import { currentFrame, frameStore, activeFrame } from '$lib/js/stores'
+    import { newPixelFrame } from '$lib/js/defaults'
 
     const handleClick = () => {
         let deleteFrame = confirm("Delete this frame?")

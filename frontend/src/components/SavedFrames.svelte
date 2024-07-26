@@ -4,7 +4,7 @@
     import Preview from './Preview.svelte'
 
     // MISC
-    import { frameStore, activeFrame } from '../js/stores'
+    import { frameStore, activeFrame } from '$lib/js/stores'
 
     let copied = writable({})
 

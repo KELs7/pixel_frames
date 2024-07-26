@@ -2,9 +2,9 @@
     import { getContext, onMount } from 'svelte'
 
     // Misc
-    import { alreadyLiked } from '../js/store-utils.js'
-    import { config } from '../js/config.js';
-    import { userAccount } from '../js/stores.js'
+    import { alreadyLiked } from '$lib/js/store-utils.js'
+    import { config } from '$lib/js/config.js';
+    import { userAccount } from '$lib/js/stores.js'
 
     //Pictures
     import LikeFilledIcon from '../../static/img/like-filled.svg'

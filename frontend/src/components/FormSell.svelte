@@ -2,10 +2,10 @@
     import { getContext, onMount } from 'svelte'
 
 	// Misc
-	import { frames, showModal, stampRatio, currency } from '../js/stores.js'
-	import { toBigNumber, stringToFixed } from '../js/utils.js'
-	import { createSnack, closeModel } from '../js/store-utils.js'
-	import { config, stampLimits } from '../js/config.js';
+	import { frames, showModal, stampRatio, currency } from '$lib/js/stores.js'
+	import { toBigNumber, stringToFixed } from '$lib/js/utils.js'
+	import { createSnack, closeModel } from '$lib/js/store-utils.js'
+	import { config, stampLimits } from '$lib/js/config.js';
 
 	// Components
 	import Preview from './Preview.svelte'

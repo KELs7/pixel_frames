@@ -4,7 +4,7 @@
 	import { quintOut } from 'svelte/easing';
 
     // Misc
-    import { snackbars } from '../js/stores.js';
+    import { snackbars } from '$lib/js/stores.js';
 
     // Icons
     import CheckIcon from '../../static/img/check-filled.svg'

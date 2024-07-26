@@ -1,8 +1,8 @@
 <script>
     // Misc
-    import {config} from "../js/config";
-    import { formatAccountAddress, stringToFixed, toBigNumber, getTimeAgo} from "../js/utils";
-    import { userAccount} from "../js/stores";
+    import {config} from "$lib/js/config";
+    import { formatAccountAddress, stringToFixed, toBigNumber, getTimeAgo} from "$lib/js/utils";
+    import { userAccount} from "$lib/js/stores";
 
     export let bidHistory
 

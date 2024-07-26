@@ -1,6 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
-	import { walletInfo } from '../js/stores.js';
+	import { walletInfo } from '$lib/js/stores.js';
 
     export let xdu;
 

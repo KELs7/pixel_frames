@@ -1,8 +1,8 @@
 <script>
 	import { createEventDispatcher} from 'svelte'
-	import { showModal, frames, released, userAccount } from '../js/stores.js'
+	import { showModal, frames, released, userAccount } from '$lib/js/stores.js'
 	import FormCreate from './FormCreate.svelte'
-	import { framesEmpty, hasNulls } from '../js/utils.js'
+	import { framesEmpty, hasNulls } from '$lib/js/utils.js'
 
 	const dispatch = createEventDispatcher();
 

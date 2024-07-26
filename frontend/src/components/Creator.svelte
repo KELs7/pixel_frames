@@ -3,9 +3,9 @@
     import DisplayFrames from './DisplayFrames.svelte';
 
     // MISC
-    import { decodeFrames, formatAccountAddress, isLamdenKey  } from "../js/utils.js";
-    import { userAccount } from '../js/stores'
-    import { config } from '../js/config'
+    import { decodeFrames, formatAccountAddress, isLamdenKey  } from "$lib/js/utils.js";
+    import { userAccount } from '$lib/js/stores'
+    import { config } from '$lib/js/config'
 
     export let created;
     export let creator;

@@ -2,10 +2,10 @@
     import { getContext } from 'svelte'
 
 	// Misc
-	import { frames, showModal, stampRatio, currency } from '../js/stores.js'
-	import { isLamdenKey, toBigNumber, stringToFixed } from '../js/utils.js'
-	import { createSnack, closeModel } from '../js/store-utils.js'
-	import { config, stampLimits } from '../js/config.js';
+	import { frames, showModal, stampRatio, currency } from '$lib/js/stores.js'
+	import { isLamdenKey, toBigNumber, stringToFixed } from '$lib/js/utils.js'
+	import { createSnack, closeModel } from '$lib/js/store-utils.js'
+	import { config, stampLimits } from '$lib/js/config.js';
 
     // Components
 	import Preview from './Preview.svelte'
@@ -52,7 +52,7 @@
     		let tries = 0
 			let maxTries = 30
     		const get_thing_info = async () => {
-    			let new_thing_info = await fetch(`./frames/${txResults.txInfo.kwargs.uid}.json`)
+    			let new_thing_info = await fetch(`/api/frames/${txResults.txInfo.kwargs.uid}`)
 					.then(res => res.json())
 					.catch(() => resolve(false))
 				if (new_thing_info.lastUpdate > sendTime) resolve(new_thing_info)

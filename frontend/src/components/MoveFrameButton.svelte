@@ -1,6 +1,6 @@
 <script>
     import { tick } from 'svelte'
-    import { activeFrame, frameStore, frames, currentFrame } from '../js/stores'
+    import { activeFrame, frameStore, frames, currentFrame } from '$lib/js/stores'
     export let index
     export let width = "10px"
     export let direction = "right"

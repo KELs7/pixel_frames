@@ -2,10 +2,10 @@
     import {getContext, onMount, createEventDispatcher} from 'svelte'
 
     // Misc
-    import {userAccount, autoTx, auctions} from '../js/stores.js'
-    import { createWatermark } from '../js/utils.js'
-    import {alreadyLiked, createSnack} from '../js/store-utils.js'
-    import { config } from '../js/config.js';
+    import {userAccount, autoTx, auctions} from '$lib/js/stores.js'
+    import { createWatermark } from '$lib/js/utils.js'
+    import {alreadyLiked, createSnack} from '$lib/js/store-utils.js'
+    import { config } from '$lib/js/config.js';
 
     // Components
     import Frame from './Frame.svelte'

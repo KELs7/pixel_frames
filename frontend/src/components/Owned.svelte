@@ -5,9 +5,9 @@
 
     import DisplayFrames from './DisplayFrames.svelte';
 
-    import { formatThings, updateInfo, dedupArray, formatAccountAddress, isLamdenKey } from "../js/utils.js";
-    import { userAccount } from '../js/stores'
-	import { config } from '../js/config'
+    import { formatThings, updateInfo, dedupArray, formatAccountAddress, isLamdenKey } from "$lib/js/utils.js";
+    import { userAccount } from '$lib/js/stores'
+	import { config } from '$lib/js/config'
 
     export let owned;
     export let account;
@@ -32,7 +32,7 @@
     	if (count === formatted.length) return
     	if (sending) return;
 		sending = true;
-		const res = await fetch(`./owned/${account}.json?limit=25&offset=${formatted.length}`)
+		const res = await fetch(`/api/owned/${account}?limit=25&offset=${formatted.length}`)
 		let things = await res.json()
 		if (!things.data) things.data = []
 		sending = false;

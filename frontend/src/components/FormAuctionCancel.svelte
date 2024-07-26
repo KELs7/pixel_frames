@@ -2,10 +2,10 @@
     import { getContext } from 'svelte'
 
 	// Misc
-	import {  showModal, currency, userAccount, stampRatio } from '../js/stores.js'
-	import { toBigNumber, stringToFixed } from '../js/utils.js'
-	import { createSnack, closeModel } from '../js/store-utils.js'
-	import { config, stampLimits } from '../js/config.js'
+	import {  showModal, currency, userAccount, stampRatio } from '$lib/js/stores.js'
+	import { toBigNumber, stringToFixed } from '$lib/js/utils.js'
+	import { createSnack, closeModel } from '$lib/js/store-utils.js'
+	import { config, stampLimits } from '$lib/js/config.js'
 
 	// Icons
 	import IconPixelCancel from '../icons/pixelCancel.svelte'

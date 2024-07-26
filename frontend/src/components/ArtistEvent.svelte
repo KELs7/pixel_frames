@@ -10,8 +10,8 @@
 	import IconTelegram from '../../static/img/telegram.svg'
 
 	// Misc
-	import {getTimeAgo, getTimeTo} from "../js/utils";
-	import { auctions } from "../js/stores";
+	import {getTimeAgo, getTimeTo} from "$lib/js/utils";
+	import { auctions } from "$lib/js/stores";
 
 	//auctions.subscribe(curr => console.log(curr))
 

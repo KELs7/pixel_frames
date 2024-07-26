@@ -1,7 +1,7 @@
 <script>
     // MISC
-    import { newPixelFrame } from '../js/defaults'
-    import { frameStore, activeFrame } from '../js/stores'
+    import { newPixelFrame } from '$lib/js/defaults'
+    import { frameStore, activeFrame } from '$lib/js/stores'
 
     const handleClick = () => {
         frameStore.update(currentValue => {

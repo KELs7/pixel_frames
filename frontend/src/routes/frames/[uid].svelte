@@ -1,41 +1,10 @@
-<script context="module">
-	import { decodeFrames } from '../../js/utils.js'
-
-	export async function preload({ params, query }) {
-		let data = await Promise.all([
-				this.fetch(`./frames/${params.uid}.json`).then(res => res.json()),
-				this.fetch(`./history/${params.uid}.json`).then(res => res.json())
-		])
-
-		let { thingInfo, auctionInfo } = data[0]
-
-		try{
-			thingInfo.frames = decodeFrames(thingInfo.thing)
-		}catch(e){
-			thingInfo = {
-				name: "Not Found",
-				owner: "",
-				uid: params.uid,
-				description: "",
-				notFound: true
-			}
-		}
-
-	    return {
-			thingInfo,
-			auctionInfo,
-			salesHistory: data[1]
-		}
-	}
-</script>
-
 <script>
 	// Components
 	import DisplayFramesOne from "../../components/DisplayFramesOne.svelte";
 
 	// MISC
-    import { updateInfo} from '../../js/utils.js'
-	import { config } from '../../js/config.js'
+    import { updateInfo} from '../$lib/js/utils.js'
+	import { config } from '../$lib/js/config.js'
 
 	export let thingInfo
 	export let auctionInfo

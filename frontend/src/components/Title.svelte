@@ -1,6 +1,6 @@
 <script>
 	import {onMount} from 'svelte'
-	import {letter_to_color, color_to_letter} from '../js/utils'
+	import {letter_to_color, color_to_letter} from '$lib/js/utils'
 	import CreatedWithLove from "./CreatedWithLove.svelte";
 
 	export let fontSize = 8;

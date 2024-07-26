@@ -1,5 +1,5 @@
 <script>
-    import { frames, currentFrame, totalPixels  } from '../js/stores'
+    import { frames, currentFrame, totalPixels  } from '$lib/js/stores'
 
     export let pixels
     export let pixelSize = 5

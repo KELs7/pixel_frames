@@ -1,9 +1,9 @@
 <script>
 
     // Misc
-    import { userAccount, showModal, released, tauPrice, auctions } from '../js/stores.js'
-    import { stringToFixed, toBigNumber } from '../js/utils.js'
-    import { config, featureLocks } from '../js/config.js'
+    import { userAccount, showModal, released, tauPrice, auctions } from '$lib/js/stores.js'
+    import { stringToFixed, toBigNumber } from '$lib/js/utils.js'
+    import { config, featureLocks } from '$lib/js/config.js'
 
     // Pictures
     import LamdenLogoIcon from '../../static/img/lamden_logo_new.svg'

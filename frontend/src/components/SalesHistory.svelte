@@ -1,6 +1,6 @@
 <script>
-    import { stringToFixed, timeDelta, formatAccountAddress} from '../js/utils'
-    import { config } from '../js/config'
+    import { stringToFixed, timeDelta, formatAccountAddress} from '$lib/js/utils'
+    import { config } from '$lib/js/config'
 
     // Icons
     import LamdenLogoIcon from '../../static/img/lamden_logo_new.svg'

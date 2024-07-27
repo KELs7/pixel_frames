@@ -1,4 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
 import svg from '@poppanator/sveltekit-svg';
 
 import inject from "@rollup/plugin-inject";
@@ -11,7 +12,7 @@ import { NodeModulesPolyfillPlugin } from "@esbuild-plugins/node-modules-polyfil
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 
-const config = {
+export default defineConfig ({
     plugins: [
         sveltekit(),
         svg(),
@@ -40,7 +41,7 @@ const config = {
         },
     },
     ssr: {
-        noExternal: ['dayjs']
+        noExternal: ['dayjs'],
     },
     optimizeDeps: {
         esbuildOptions: {
@@ -61,6 +62,4 @@ const config = {
     define: {
         global: "window",
     }
-};
-
-export default config;
+});

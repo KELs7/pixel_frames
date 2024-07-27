@@ -38,6 +38,19 @@ export const config = {
     masternode: "https://testnet-master-1.lamden.io" // CHANGE
 }
 
+export const featureLocks = {
+    auctions: {
+        locked: false,
+        whitelist: []
+    }
+
+}
+
+export const socket_config = {
+    host: "http:localhost", // DECIDE
+    port: 5001 // CHANGE
+}
+
 
 export const stampLimits = (()=>{
     let stampValues = {}

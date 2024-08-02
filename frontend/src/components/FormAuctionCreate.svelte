@@ -110,9 +110,10 @@
 	}
 
 	const handleApproveTx = (txResults) => {
-        if (txResults.txBlockResult.status === 0) {
-        	auction_thing()
-        }
+        // if (txResults.txBlockResult.status === 0) {
+        // 	auction_thing()
+        // }
+		auction_thing()
     }
 
 	const handleBidTx = () => {

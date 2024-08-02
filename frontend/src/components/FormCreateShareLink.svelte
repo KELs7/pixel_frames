@@ -43,24 +43,39 @@
 		closeModel()
     }
 
-	const handleAuthCode = async (txResults) => {
-    	console.log(txResults)
-		if (txResults.txBlockResult.status === 0) {
-			let authResponse = await checkForValidAuth()
-			if (authResponse.error){
-				createSnack({
-					title: `Cannot create share link!`,
-					body: ` ${authResponse.error}`,
-					type: "error"
-				})
-			}else{
-				updateInfo(authResponse)
-				createSnack({
-					title: `Share Link Created!`,
-					body: `You have created a shareable link for ${thingName}.`,
-					type: "info"
-				})
-			}
+	const handleAuthCode = async () => {
+    	// console.log(txResults)
+		// if (txResults.txBlockResult.status === 0) {
+		// 	let authResponse = await checkForValidAuth()
+		// 	if (authResponse.error){
+		// 		createSnack({
+		// 			title: `Cannot create share link!`,
+		// 			body: ` ${authResponse.error}`,
+		// 			type: "error"
+		// 		})
+		// 	}else{
+		// 		updateInfo(authResponse)
+		// 		createSnack({
+		// 			title: `Share Link Created!`,
+		// 			body: `You have created a shareable link for ${thingName}.`,
+		// 			type: "info"
+		// 		})
+		// 	}
+		// }
+		let authResponse = await checkForValidAuth()
+		if (authResponse.error){
+			createSnack({
+				title: `Cannot create share link!`,
+				body: ` ${authResponse.error}`,
+				type: "error"
+			})
+		}else{
+			updateInfo(authResponse)
+			createSnack({
+				title: `Share Link Created!`,
+				body: `You have created a shareable link for ${thingName}.`,
+				type: "info"
+			})
 		}
     }
 

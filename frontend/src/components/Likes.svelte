@@ -44,12 +44,15 @@
     }
 
     const handleLikeTx = (txResults) => {
-        //console.log(txResults)
-        if (txResults.txBlockResult.status === 0) {
-            liked = true;
-            thingInfo.likes = thingInfo.likes + 1;
-            localStorage.setItem(`${thingInfo.uid}:${$userAccount}:liked`, true)
-        }
+        //console.log(txResults) this line was commented before
+        // if (txResults.txBlockResult.status === 0) {
+        //     liked = true;
+        //     thingInfo.likes = thingInfo.likes + 1;
+        //     localStorage.setItem(`${thingInfo.uid}:${$userAccount}:liked`, true)
+        // }
+        liked = true;
+        thingInfo.likes = thingInfo.likes + 1;
+        localStorage.setItem(`${thingInfo.uid}:${$userAccount}:liked`, true)
     }
 
     userAccount.subscribe(account => checkAlreadyLiked())

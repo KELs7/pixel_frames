@@ -71,16 +71,23 @@
         sendTransaction(transaction, handleLikeTx)
     }
 
-    const handleLikeTx = (txResults) => {
-        if (txResults.txBlockResult.status === 0) {
-            liked = true;
-            thingInfo.likes = thingInfo.likes + 1;
-            createSnack({
-                title: `${thingInfo.name}`,
-                body: 'You liked this creation!',
-                type: "info"
-            })
-        }
+    const handleLikeTx = () => {
+        // if (txResults.txBlockResult.status === 0) {
+        //     liked = true;
+        //     thingInfo.likes = thingInfo.likes + 1;
+        //     createSnack({
+        //         title: `${thingInfo.name}`,
+        //         body: 'You liked this creation!',
+        //         type: "info"
+        //     })
+        // }
+        liked = true;
+        thingInfo.likes = thingInfo.likes + 1;
+        createSnack({
+            title: `${thingInfo.name}`,
+            body: 'You liked this creation!',
+            type: "info"
+        })
     }
 
     const updateThingInfo = (updates) => {

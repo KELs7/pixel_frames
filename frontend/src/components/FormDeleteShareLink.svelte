@@ -43,24 +43,39 @@
 		closeModel()
     }
 
-	const handleAuthCode = async (txResults) => {
-    	console.log(txResults)
-		if (txResults.txBlockResult.status === 0) {
-			let authResponse = await checkForValidAuth()
-			if (authResponse.error){
-				createSnack({
-					title: `Cannot delete share link!`,
-					body: ` ${authResponse.error}`,
-					type: "error"
-				})
-			}else{
-				updateInfo({shareLink: null})
-				createSnack({
-					title: `Share Link Deleted!`,
-					body: `You have deleted the shareable link for ${thingName}.`,
-					type: "info"
-				})
-			}
+	const handleAuthCode = async () => {
+    	// console.log(txResults)
+		// if (txResults.txBlockResult.status === 0) {
+		// 	let authResponse = await checkForValidAuth()
+		// 	if (authResponse.error){
+		// 		createSnack({
+		// 			title: `Cannot delete share link!`,
+		// 			body: ` ${authResponse.error}`,
+		// 			type: "error"
+		// 		})
+		// 	}else{
+		// 		updateInfo({shareLink: null})
+		// 		createSnack({
+		// 			title: `Share Link Deleted!`,
+		// 			body: `You have deleted the shareable link for ${thingName}.`,
+		// 			type: "info"
+		// 		})
+		// 	}
+		// }
+		let authResponse = await checkForValidAuth()
+		if (authResponse.error){
+			createSnack({
+				title: `Cannot delete share link!`,
+				body: ` ${authResponse.error}`,
+				type: "error"
+			})
+		}else{
+			updateInfo({shareLink: null})
+			createSnack({
+				title: `Share Link Deleted!`,
+				body: `You have deleted the shareable link for ${thingName}.`,
+				type: "info"
+			})
 		}
     }
 

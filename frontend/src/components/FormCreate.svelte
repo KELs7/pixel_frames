@@ -69,7 +69,7 @@
                 currentValue.splice(oldIndex, 1)
                 return currentValue
             })
-			let stateChange = txResults.txBlockResult.state.find(f => f.key.includes(':names:'))
+			let stateChange = txResults.state.find(f => f.key.includes(':names:'))
 			if (stateChange && stateChange.value) redirect(stateChange.value, window.location.href)
 		}
     }

@@ -79,26 +79,33 @@
 		},
 	})
 
-	const sendTransaction = (transaction, callback) => {
-		let usersStamps = determineUsersTotalStamps()
+	const sendTransaction = async(transaction, callback) => {
+		// let usersStamps = determineUsersTotalStamps()
 		let contractName = transaction.contractName || config.masterContract
-		let stampsToSendTx = transaction.stampLimit;
-		if (!stampsToSendTx) stampsToSendTx = stampLimits[contractName][transaction.methodName]
+		// let stampsToSendTx = transaction.stampLimit;
+		// if (!stampsToSendTx) stampsToSendTx = stampLimits[contractName][transaction.methodName]
 
-		if (usersStamps < stampsToSendTx){
-			createSnack({
-                title: `Insufficient ${config.currencySymbol}`,
-                body: `
-					It will cost ${stringToFixed(toBigNumber(stampsToSendTx / $stampRatio), 4)} ${config.currencySymbol} to send this transaction.
-					Please transfer more ${config.currencySymbol} to your Pixel Whale account using the Lamden Wallet.
-                `,
-                type: "error",
-				delay: 7000
-            })
-		}else{
-			transaction.stampLimit = stampsToSendTx
-			xdu.sendTransaction(transaction, (txResult) => txResultsHandler.parseTxResult(txResult.data, callback))
-		}
+		// if (usersStamps < stampsToSendTx){
+		// 	createSnack({
+        //         title: `Insufficient ${config.currencySymbol}`,
+        //         body: `
+		// 			It will cost ${stringToFixed(toBigNumber(stampsToSendTx / $stampRatio), 4)} ${config.currencySymbol} to send this transaction.
+		// 			Please transfer more ${config.currencySymbol} to your Pixel Whale account using the Lamden Wallet.
+        //         `,
+        //         type: "error",
+		// 		delay: 7000
+        //     })
+		// }else{
+		// 	transaction.stampLimit = stampsToSendTx
+
+		// 	const txResults = await xdu.sendTransaction(contractName, transaction.methodName, transaction.kwargs)
+		// 	.catch(txResultsHandler.handleTransactionError)
+		// 	txResultsHandler.handleTransaction(txResults)
+		// }
+
+		const txResults = await xdu.sendTransaction(contractName, transaction.methodName, transaction.kwargs)
+			.catch(txResultsHandler.handleTransactionError)
+		txResultsHandler.handleTransaction(txResults, callback)
 	}
 
 	const determineUsersTotalStamps = () => {

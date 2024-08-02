@@ -76,23 +76,33 @@
 	}
 
 	const handleApproveTx = (txResults) => {
-        if (txResults.txBlockResult.status === 0) {
-        	buy()
-        }
+        // if (txResults.txBlockResult.status === 0) {
+        // 	buy()
+        // }
+		buy()
     }
 
-	const handleBuyTx = (txResults) => {
-        if (txResults.txBlockResult.status === 0) {
-        	updateInfo({
-				owner: $userAccount,
-				"price_amount": "0",
-        	})
-			createSnack({
-				title: `Purchased!`,
-				body: `You are now the proud over of ${thingName}.`,
-				type: "info"
-			})
-		}
+	const handleBuyTx = () => {
+        // if (txResults.txBlockResult.status === 0) {
+        // 	updateInfo({
+		// 		owner: $userAccount,
+		// 		"price_amount": "0",
+        // 	})
+		// 	createSnack({
+		// 		title: `Purchased!`,
+		// 		body: `You are now the proud over of ${thingName}.`,
+		// 		type: "info"
+		// 	})
+		// }
+		updateInfo({
+			owner: $userAccount,
+			"price_amount": "0",
+		})
+		createSnack({
+			title: `Purchased!`,
+			body: `You are now the proud over of ${thingName}.`,
+			type: "info"
+		})
     }
 
 </script>

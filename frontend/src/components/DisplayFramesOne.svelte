@@ -72,7 +72,7 @@
     }
 
     const like = () => {
-        const transaction = {
+        const transaction = { // where is the contract?
             methodName: 'like_thing',
             networkType: config.networkType,
             kwargs: {

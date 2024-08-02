@@ -52,7 +52,7 @@
     		let tries = 0
 			let maxTries = 30
     		const get_thing_info = async () => {
-    			let new_thing_info = await fetch(`./frames/${txResults.txInfo.kwargs.uid}.json`)
+    			let new_thing_info = await fetch(`./frames/${txResults.original_tx.kwargs.uid}.json`)
 					.then(res => res.json())
 					.catch(() => resolve(false))
 				if (new_thing_info.lastUpdate > sendTime) resolve(new_thing_info)
@@ -65,22 +65,36 @@
 			get_thing_info()
 		})
 
-        if (txResults.txBlockResult.status === 0) {
-        	updateInfo({
-				"price_amount": "0",
-				"price_hold": "",
-				"owner": recipient.trim()
-			})
-        	let newThingInfo = await checkForUpdate()
-			if (!newThingInfo) return
+        // if (txResults.txBlockResult.status === 0) {
+        // 	updateInfo({
+		// 		"price_amount": "0",
+		// 		"price_hold": "",
+		// 		"owner": recipient.trim()
+		// 	})
+        // 	let newThingInfo = await checkForUpdate()
+		// 	if (!newThingInfo) return
 
-        	updateInfo(newThingInfo)
-			createSnack({
-				title: `NFT Sent!`,
-				body: `You gifted ${thingName} to another user.`,
-				type: "info"
-			})
-		}
+        // 	updateInfo(newThingInfo)
+		// 	createSnack({
+		// 		title: `NFT Sent!`,
+		// 		body: `You gifted ${thingName} to another user.`,
+		// 		type: "info"
+		// 	})
+		// }
+		updateInfo({
+			"price_amount": "0",
+			"price_hold": "",
+			"owner": recipient.trim()
+		})
+		let newThingInfo = await checkForUpdate()
+		if (!newThingInfo) return
+
+		updateInfo(newThingInfo)
+		createSnack({
+			title: `NFT Sent!`,
+			body: `You gifted ${thingName} to another user.`,
+			type: "info"
+		})
     }
     const clearValidity = () => {
 		inputElm.setCustomValidity("")

@@ -98,14 +98,5 @@ approvalRequest.background = 'wallet/background.png'
 export { approvalRequest };
 ```
 
-## Create environment file
-1. `nano ./.env`
-2. paste below code and change all values
-```bash
-RE_PARSE_BLOCKS=yes
-START_AT_BLOCK_NUMBER=14602
-DEBUG_ON=true
-INFO_CONTRACT=con_pw_info_3
-MASTER_CONTRACT=con_pw_master_3
-NETWORK=testnet
-```
+## Environment template files
+`.env.template` files have been provided in `database/` and `frontend/`. Remove the `.template` extension and change the values in the environment file or keep the `.env.template` files and copy their content to your own created `.env` files.

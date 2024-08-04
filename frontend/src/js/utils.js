@@ -1,9 +1,9 @@
 import { config } from './config.js'
 
-import Lamden from 'lamden-js'
+import Xian from 'xian-js'
 import { validateTypes } from 'types-validate-assert'
 
-let API = new Lamden.Masternode_API({hosts: [config.masternode]})
+let API = new Xian.MasternodeAPI({masternode_hosts: [config.masternode]})
 
 export const color_to_letter = {
     //BTW
@@ -329,15 +329,15 @@ export const stringToFixed = (value, precision) => {
 }
 
 export function toDateTime(date){
-    return Lamden.Encoder('datetime.datetime', date)
+    return Xian.Encoder('datetime.datetime', date)
 }
 
 export function toBigNumber(value) {
-  if (Lamden.Encoder.BigNumber.isBigNumber(value)) return value
-  return Lamden.Encoder.BigNumber(value)
+  if (Xian.Encoder.BigNumber.isBigNumber(value)) return value
+  return Xian.Encoder.BigNumber(value)
 }
 
-export const isBigNumber = (value) => Lamden.Encoder.BigNumber.isBigNumber(value)
+export const isBigNumber = (value) => Xian.Encoder.BigNumber.isBigNumber(value)
 
 export const toBigNumberPrecision = (value = null, precision) => {
 	if (value === null) return toBigNumber("0")

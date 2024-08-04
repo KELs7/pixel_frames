@@ -22,7 +22,7 @@ export const checkForApproval = async (contract) => {
     if (!get(userAccount)) return
     let approval = await getCurrentKeyValue( "currency", "balances", `${get(userAccount)}:${contract}`)
     if (approval === null || typeof approval === 'undefined') approval = toBigNumber(0)
-    if (!Lamden.Encoder.BigNumber.isBigNumber(approval)) toBigNumber(approval)
+    if (!Xian.Encoder.BigNumber.isBigNumber(approval)) toBigNumber(approval)
     if (approval.isNaN()) toBigNumber(0)
 
     approvalAmount.update(curr => {

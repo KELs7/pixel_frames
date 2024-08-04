@@ -38,8 +38,21 @@ importers:
       types-validate-assert:
         specifier: ^1.0.1
         version: 1.0.1
+      xian-js:
+        specifier: ^0.1.7
+        version: 0.1.7
 
 packages:
+
+  '@noble/ed25519@1.7.3':
+    resolution: {integrity: sha512-iR8GBkDt0Q3GyaVcIu7mSsVIqnFbkbRzGLWlvhwunacoLwt4J3swfKhfaM6rN6WY+TBGoYT1GtT1mIh2/jGbRQ==}
+
+  '@noble/hashes@1.1.5':
+    resolution: {integrity: sha512-LTMZiiLc+V4v1Yi16TD6aX2gmtKszNye0pQgbaLqkvhIqP7nVsSaJsWloGQjJfJ8offaoP5GtX3yY5swbcJxxQ==}
+
+  '@noble/hashes@1.4.0':
+    resolution: {integrity: sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg==}
+    engines: {node: '>= 16'}
 
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
@@ -76,6 +89,9 @@ packages:
   bignumber.js@9.1.2:
     resolution: {integrity: sha512-2/mKyZH9K85bzOEfhXDBFZTGd1CTs+5IHpeFQo9luiBG7hghdC851Pj2WAhb6E3R6b9tZj/XKhbg4fum+Kepug==}
 
+  bip39@3.1.0:
+    resolution: {integrity: sha512-c9kiwdk45Do5GL0vJMe7tS95VjCii65mYAH7DfWl3uW8AVzXKQVUm64i3hzVybBDMp9r7j9iNxR85+ul8MdN/A==}
+
   bl@2.2.1:
     resolution: {integrity: sha512-6Pesp1w0DEX1N550i/uGV/TqucVL4AM/pgThFSN/Qq9si1/DF9aIHs1BxD8V/QU0HoeHO6cQRTAuYnLPKq1e4g==}
 
@@ -88,6 +104,9 @@ packages:
 
   buffer@5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
+
+  buffer@6.0.3:
+    resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
 
   coingecko-api@1.0.10:
     resolution: {integrity: sha512-7YLLC85+daxAw5QlBWoHVBVpJRwoPr4HtwanCr8V/WRjoyHTa1Lb9DQAvv4MDJZHiz4no6HGnDQnddtjV35oRA==}
@@ -154,6 +173,10 @@ packages:
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
+  install@0.13.0:
+    resolution: {integrity: sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==}
+    engines: {node: '>= 0.10'}
+
   isarray@1.0.0:
     resolution: {integrity: sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==}
 
@@ -162,6 +185,10 @@ packages:
 
   memory-pager@1.5.0:
     resolution: {integrity: sha512-ZS4Bp4r/Zoeq6+NLJpP+0Zzm0pR8whtGPf1XExKLJBAczGMnSi3It14OiNCStjQjM6NU1okjQGSxgEZN8eBYKg==}
+
+  micro-ed25519-hdkey@0.1.2:
+    resolution: {integrity: sha512-oHEvmBntX3vVAQ3NenKnu9K4pv6cYGgu0EP8i3ThORg7TedWMR7zFqBAznsK02xQZjMatgjn2UFpSpK4jBzMng==}
+    deprecated: 'Switch to micro-key-producer: the package has been merged into it'
 
   mime-db@1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
@@ -222,6 +249,9 @@ packages:
     resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
     engines: {node: '>= 0.6'}
 
+  node-cryptojs-aes@0.4.0:
+    resolution: {integrity: sha512-fLUhIYUwZNhvp4eDmDfTMXCQSthkgIkKFlrRVdKFlEnjBDiEiSkJMHwr9OjWHck7BTwf7T1hxjswAu+baO7ygg==}
+
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
     engines: {node: 4.x || >=6.0.0}
@@ -230,6 +260,80 @@ packages:
     peerDependenciesMeta:
       encoding:
         optional: true
+
+  npm@10.8.2:
+    resolution: {integrity: sha512-x/AIjFIKRllrhcb48dqUNAAZl0ig9+qMuN91RpZo3Cb2+zuibfh+KISl6+kVVyktDz230JKc208UkQwwMqyB+w==}
+    engines: {node: ^18.17.0 || >=20.5.0}
+    hasBin: true
+    bundledDependencies:
+      - '@isaacs/string-locale-compare'
+      - '@npmcli/arborist'
+      - '@npmcli/config'
+      - '@npmcli/fs'
+      - '@npmcli/map-workspaces'
+      - '@npmcli/package-json'
+      - '@npmcli/promise-spawn'
+      - '@npmcli/redact'
+      - '@npmcli/run-script'
+      - '@sigstore/tuf'
+      - abbrev
+      - archy
+      - cacache
+      - chalk
+      - ci-info
+      - cli-columns
+      - fastest-levenshtein
+      - fs-minipass
+      - glob
+      - graceful-fs
+      - hosted-git-info
+      - ini
+      - init-package-json
+      - is-cidr
+      - json-parse-even-better-errors
+      - libnpmaccess
+      - libnpmdiff
+      - libnpmexec
+      - libnpmfund
+      - libnpmhook
+      - libnpmorg
+      - libnpmpack
+      - libnpmpublish
+      - libnpmsearch
+      - libnpmteam
+      - libnpmversion
+      - make-fetch-happen
+      - minimatch
+      - minipass
+      - minipass-pipeline
+      - ms
+      - node-gyp
+      - nopt
+      - normalize-package-data
+      - npm-audit-report
+      - npm-install-checks
+      - npm-package-arg
+      - npm-pick-manifest
+      - npm-profile
+      - npm-registry-fetch
+      - npm-user-validate
+      - p-map
+      - pacote
+      - parse-conflict-json
+      - proc-log
+      - qrcode-terminal
+      - read
+      - semver
+      - spdx-expression-parse
+      - ssri
+      - supports-color
+      - tar
+      - text-table
+      - tiny-relative-date
+      - treeverse
+      - validate-npm-package-name
+      - which
+      - write-file-atomic
 
   oauth@0.9.15:
     resolution: {integrity: sha512-a5ERWK1kh38ExDEfoO6qUHJb32rd7aYmPHuyCu3Fta/cnICvYmgd2uhuKXvPD+PXB+gCEYYEaQdIRAjCOwAKNA==}
@@ -302,6 +406,9 @@ packages:
   tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
 
+  tweetnacl@1.0.1:
+    resolution: {integrity: sha512-kcoMoKTPYnoeS50tzoqjPY3Uv9axeuuFAZY9M/9zFnhoVvRfxz9K29IMPD7jGmt2c8SW7i3gT9WqDl2+nV7p4A==}
+
   twitter-api-client@1.6.1:
     resolution: {integrity: sha512-VkVDJzX0i6FC7CyZeeJluU1+bQ+8o5pwawgEjm7N5byaXF/cD9T4fzSzYX8y3ZhbwmkeUslYHQkquzQ2vigTmw==}
 
@@ -336,11 +443,20 @@ packages:
       utf-8-validate:
         optional: true
 
+  xian-js@0.1.7:
+    resolution: {integrity: sha512-3FZ0rtbUOfwa80RnOk/rru604sarg3QLOjtk1+NyEfnor4NjZpmHcm27Ukv1ZbcmQWypr/psjaBq304eypnQ1A==}
+
   xmlhttprequest-ssl@2.0.0:
     resolution: {integrity: sha512-QKxVRxiRACQcVuQEYFsI1hhkrMlrXHPegbbd1yn9UHOmRxY+si12nQYzri3vbzt8VdTTRviqcKxcyllFas5z2A==}
     engines: {node: '>=0.4.0'}
 
 snapshots:
+
+  '@noble/ed25519@1.7.3': {}
+
+  '@noble/hashes@1.1.5': {}
+
+  '@noble/hashes@1.4.0': {}
 
   '@socket.io/component-emitter@3.1.2': {}
 
@@ -380,6 +496,10 @@ snapshots:
 
   bignumber.js@9.1.2: {}
 
+  bip39@3.1.0:
+    dependencies:
+      '@noble/hashes': 1.4.0
+
   bl@2.2.1:
     dependencies:
       readable-stream: 2.3.8
@@ -390,6 +510,11 @@ snapshots:
   bson@1.1.6: {}
 
   buffer@5.7.1:
+    dependencies:
+      base64-js: 1.5.1
+      ieee754: 1.2.1
+
+  buffer@6.0.3:
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
@@ -454,12 +579,19 @@ snapshots:
 
   inherits@2.0.4: {}
 
+  install@0.13.0: {}
+
   isarray@1.0.0: {}
 
   kareem@2.3.2: {}
 
   memory-pager@1.5.0:
     optional: true
+
+  micro-ed25519-hdkey@0.1.2:
+    dependencies:
+      '@noble/ed25519': 1.7.3
+      '@noble/hashes': 1.1.5
 
   mime-db@1.52.0: {}
 
@@ -524,9 +656,13 @@ snapshots:
 
   negotiator@0.6.3: {}
 
+  node-cryptojs-aes@0.4.0: {}
+
   node-fetch@2.7.0:
     dependencies:
       whatwg-url: 5.0.0
+
+  npm@10.8.2: {}
 
   oauth@0.9.15: {}
 
@@ -623,6 +759,8 @@ snapshots:
 
   tr46@0.0.3: {}
 
+  tweetnacl@1.0.1: {}
+
   twitter-api-client@1.6.1:
     dependencies:
       oauth: 0.9.15
@@ -644,5 +782,23 @@ snapshots:
       webidl-conversions: 3.0.1
 
   ws@8.17.1: {}
+
+  xian-js@0.1.7:
+    dependencies:
+      bignumber.js: 9.1.2
+      bip39: 3.1.0
+      buffer: 6.0.3
+      install: 0.13.0
+      micro-ed25519-hdkey: 0.1.2
+      node-cryptojs-aes: 0.4.0
+      node-fetch: 2.7.0
+      npm: 10.8.2
+      socket.io-client: 4.7.5
+      tweetnacl: 1.0.1
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - supports-color
+      - utf-8-validate
 
   xmlhttprequest-ssl@2.0.0: {}

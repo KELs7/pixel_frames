@@ -1,4 +1,4 @@
-import Lamden from 'lamden-js'
+import Xian from 'xian-js'
 import fs from "fs";
 import { validateTypes } from 'types-validate-assert'
 
@@ -455,8 +455,8 @@ export const getDbUtils = (config) => {
     }
 
     function toBigNumber (value) {
-      if (Lamden.Encoder.BigNumber.isBigNumber(value)) return value
-      return Lamden.Encoder.BigNumber(value)
+      if (Xian.Encoder.BigNumber.isBigNumber(value)) return value
+      return Xian.Encoder.BigNumber(value)
     }
 
     return  {

@@ -9,7 +9,7 @@ import crypto from 'crypto'
 import sirv from 'sirv';
 let dynamicGIF = sirv('gif');
 import * as sapper from '@sapper/server';
-import Lamden from 'lamden-js'
+import Xian from 'xian-js'
 
 import compression from 'compression';
 import { getDatabase } from "../../database/database.mjs";
@@ -26,7 +26,7 @@ const initGlobal = async () => {
 
 	global.randomHash = () => {
 		return crypto.createHash("sha256")
-			.update(Lamden.utils.randomString(16))
+			.update(Xian.utils.randomString(16))
 			.digest("hex");
 	}
 /*

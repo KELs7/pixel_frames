@@ -4,7 +4,7 @@ import io_client from "socket.io-client"
 import util from 'util'
 
 import { getDatabase} from "./database.mjs"
-import { update_tau_price } from './price-updater.mjs'
+//  import { update_tau_price } from './price-updater.mjs'
 import { update_stamp_ratio } from './updateStampRatio.mjs'
 import { getProcessors } from "./db_processors.mjs";
 import * as SocketServer from './services/socketserver.mjs'
@@ -54,10 +54,10 @@ const start = async () => {
         [AUCTION_CONTRACT, 'AuctionContractProcessor']
     ])
 
-    let tauUpdater = update_tau_price(db.models)
+    // let tauUpdater = update_tau_price(db.models)
     let stampRatioUpdater = update_stamp_ratio(db.models, BLOCKEXPLORER_URL)
 
-    tauUpdater.updatePrice()
+    // tauUpdater.updatePrice()
     stampRatioUpdater.updateStampRatio()
 
     socket_client.on('connect', () => {

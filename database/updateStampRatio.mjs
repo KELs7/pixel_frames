@@ -2,9 +2,11 @@ import fetch from 'node-fetch'
 
 export const update_stamp_ratio = (models, blockexplorer_url) => {
     const updateStampRatio = async  () => {
-		fetch(`${blockexplorer_url}/api/lamden/stamps`)
+		fetch(`${blockexplorer_url}/abci_query?path=%22/get/stamp_cost.S:value%22`)
 				.then(res => res.json())
 				.then(async (res) => {
+                    const value = res?.result?.response?.value
+                    res.value = atob(value)
 				    if (!res || !res.value){
                         checkAgain()
                         return

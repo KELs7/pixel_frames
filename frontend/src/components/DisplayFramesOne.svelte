@@ -82,7 +82,7 @@
 
         createSnack({
             title: `Liking ${thingInfo.name}`,
-            body: "Please approve the Lamden Wallet transaction popup.",
+            body: "Please approve the Xian Wallet transaction popup.",
             type: "info"
         })
 

@@ -57,7 +57,7 @@ export const getDbUtils = (config) => {
         }
     }
 
-    const isLamdenKey = ( key ) => {
+    const isXianKey = ( key ) => {
         if (validateTypes.isStringHex(key) && key.length === 64) return true;
         return false;
     }
@@ -461,7 +461,7 @@ export const getDbUtils = (config) => {
 
     return  {
         deconstructKey,
-        isLamdenKey,
+        isXianKey,
         create_new_thing,
         update_liked,
         update_price_info,

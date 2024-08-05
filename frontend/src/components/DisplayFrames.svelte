@@ -63,7 +63,7 @@
         if (!$autoTx) {
             createSnack({
                 title: `Liking ${thingInfo.name}`,
-                body: 'Check for Lamden Wallet popup to approve transaction.',
+                body: 'Check for Xian Wallet popup to approve transaction.',
                 type: "info"
             })
         }

@@ -3,7 +3,7 @@
     import DisplayFrames from './DisplayFrames.svelte';
 
     // MISC
-    import { decodeFrames, formatAccountAddress, isLamdenKey  } from "../js/utils.js";
+    import { decodeFrames, formatAccountAddress, isXianKey  } from "../js/utils.js";
     import { userAccount } from '../js/stores'
     import { config } from '../js/config'
 
@@ -72,7 +72,7 @@
 </style>
 <h2 class="text-color-primary-dark">
 	All NFTs Created by
-	{#if isLamdenKey(creator)}
+	{#if isXianKey(creator)}
 		<a href="{`${config.blockExplorer}/addresses/${creator}`}" target="_blank" rel="noopener noreferrer">
             {formatAccountAddress(creator, 8, 5)}
         </a>

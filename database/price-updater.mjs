@@ -4,7 +4,7 @@ const CoinGeckoClient = new CoinGecko();
 
 
 export const update_tau_price = (models) => {
-    let coinName = "lamden"
+    let coinName = "xian"
 
     const updatePrice = async  () => {
         await CoinGeckoClient.coins.fetchTickers(coinName)

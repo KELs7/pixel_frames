@@ -373,7 +373,7 @@ export function valuesToBigNumber(obj) {
     return obj
 }
 
-export const isLamdenKey = ( key ) => {
+export const isXianKey = ( key ) => {
     if (validateTypes.isStringHex(key) && key.length === 64) return true;
     return false;
 }

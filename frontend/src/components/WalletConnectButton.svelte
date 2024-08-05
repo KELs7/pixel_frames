@@ -11,7 +11,7 @@
 </script>
 
 {#if !installed}
-    <a href="https://chrome.google.com/webstore/detail/lamden-wallet-browser-ext/fhfffofbcgbjjojdnpcfompojdjjhdim"
+    <a href="https://chromewebstore.google.com/search/Xian"
        target="_blank"
        rel="noopener noreferrer"
        class="button">Install Wallet</a>

@@ -90,7 +90,7 @@
         //         title: `Insufficient ${config.currencySymbol}`,
         //         body: `
 		// 			It will cost ${stringToFixed(toBigNumber(stampsToSendTx / $stampRatio), 4)} ${config.currencySymbol} to send this transaction.
-		// 			Please transfer more ${config.currencySymbol} to your Pixel Whale account using the Lamden Wallet.
+		// 			Please transfer more ${config.currencySymbol} to your Pixel Whale account using the Xian Wallet.
         //         `,
         //         type: "error",
 		// 		delay: 7000

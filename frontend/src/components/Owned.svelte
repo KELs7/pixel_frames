@@ -5,7 +5,7 @@
 
     import DisplayFrames from './DisplayFrames.svelte';
 
-    import { formatThings, updateInfo, dedupArray, formatAccountAddress, isLamdenKey } from "../js/utils.js";
+    import { formatThings, updateInfo, dedupArray, formatAccountAddress, isXianKey } from "../js/utils.js";
     import { userAccount } from '../js/stores'
 	import { config } from '../js/config'
 
@@ -67,7 +67,7 @@
 
 <h2 class="text-color-primary-dark">
 	All NFTs owned by
-	{#if isLamdenKey(account)}
+	{#if isXianKey(account)}
 		<a href="{`${config.blockExplorer}/addresses/${account}`}" target="_blank" rel="noopener noreferrer">
 			{formatAccountAddress(account, 8, 5)}
 		</a>

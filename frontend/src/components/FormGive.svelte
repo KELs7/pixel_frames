@@ -3,7 +3,7 @@
 
 	// Misc
 	import { frames, showModal, stampRatio, currency } from '../js/stores.js'
-	import { isLamdenKey, toBigNumber, stringToFixed } from '../js/utils.js'
+	import { isXianKey, toBigNumber, stringToFixed } from '../js/utils.js'
 	import { createSnack, closeModel } from '../js/store-utils.js'
 	import { config, stampLimits } from '../js/config.js';
 
@@ -22,8 +22,8 @@
 
 	const checkRecipient = (e) => {
 		//console.log(e.target)
-		//console.log(!isLamdenKey(recipient.trim()))
-		if (!isLamdenKey(recipient.trim())) inputElm.setCustomValidity("Not a proper Lamden Address")
+		//console.log(!isXianKey(recipient.trim()))
+		if (!isXianKey(recipient.trim())) inputElm.setCustomValidity("Not a proper Xian Address")
 		else {
 			inputElm.setCustomValidity("")
 			give()

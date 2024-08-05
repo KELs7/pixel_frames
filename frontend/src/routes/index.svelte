@@ -78,7 +78,7 @@
 
 <div class="mobile-message">
 	<strong>This site is not mobile optimized.</strong>>
-	Please visit us on a desktop for the full experience including integration with the Lamden Wallet to enable
+	Please visit us on a desktop for the full experience including integration with the Xian Wallet to enable
 	<strong>buying, selling and creating custom NFT pixel animations!</strong>
 </div>
 

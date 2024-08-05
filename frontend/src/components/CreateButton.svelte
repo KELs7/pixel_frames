@@ -16,7 +16,7 @@
 			return
 		}
 		if (!$userAccount) {
-			alert('You must be signed into the Lamden Wallet to upload your NFT to the blockchain.')
+			alert('You must be signed into the Xian Wallet to upload your NFT to the blockchain.')
 			return
 		}
 		showModal.set({modalData: {modal: FormCreate, created}, show: true})

@@ -19,7 +19,7 @@ export const getProcessedQueries = (db) => {
 
     return {
         update_processed,
-        shouldProcess,
+        // shouldProcess,
         delete_processed
     }
 }

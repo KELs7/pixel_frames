@@ -46,7 +46,8 @@ export default {
 			}),
 			resolve({
 				browser: true,
-				dedupe: ['svelte']
+				dedupe: ['svelte'],
+				preferBuiltins: true
 			}),
 			nodePolyfills({
 				include: ['buffer/', 'process', 'util']
@@ -105,7 +106,8 @@ export default {
 				emitFiles: false // already emitted by client build
 			}),
 			resolve({
-				dedupe: ['svelte']
+				dedupe: ['svelte'],
+				preferBuiltins: true
 			}),
 			commonjs()
 		],

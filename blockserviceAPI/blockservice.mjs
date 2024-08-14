@@ -26,15 +26,9 @@ export const getBlockService = (url, port) => {
         return res.data
     }
 
-    async function getVariableChanges(contractName, variableName, last_tx_uid, limit=10){
-        let endpoint = 'variable_history'
-        let query = [
-            `contract=${contractName}`,
-            `variable=${variableName}`,
-            `last_tx_uid=${last_tx_uid}`,
-            `limit=${limit}`
-        ].join("&")
-        let res = await axios(`${fullURL}/${endpoint}?${query}`)
+    async function getVariableChanges(contractName, variableName, limit=10){
+        let endpoint = 'abci_query' 
+        let res = await axios(`${fullURL}/${endpoint}?path=%22/state/${contractName}.${variableName}%22`)
         //console.log(util.inspect(res.data, false, null, true))
         return res.data
     }

@@ -29,7 +29,7 @@ export const loadCollection = (starting_tx_uid = "000000000000.00000.00000", dro
     let done
 
     async function getUpdates(last_tx_uid){
-        return await blockService.getVariableChanges(AUCTION_CONTRACT, "S", last_tx_uid, 1)
+        return await blockService.getVariableChanges(AUCTION_CONTRACT, "S", 1)
     }
 
     async function processUpdates(updates){

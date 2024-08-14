@@ -27,7 +27,7 @@ export const auctionContractProcessor = (database, socket_server, services) =>{
     async function processUpdate(update, loader=false){
         if (!loader) console.log(util.inspect({processorName, update}, false, null, true))
         
-        let last_tx_uid = update.tx_uid
+        
 
         let { state_changes_obj, txInfo } = update
         const { transaction } = txInfo
@@ -37,36 +37,36 @@ export const auctionContractProcessor = (database, socket_server, services) =>{
             state_changes_obj = JSON.parse(state_changes_obj)
         }
 
-        if (await db.queries.shouldProcess('AuctionHistoryContract', last_tx_uid)){
-            let contractUpdate = {}
-            try{
-                contractUpdate = state_changes_obj[AUCTION_CONTRACT]["S"]
-            }catch (e){}
+        // if (await db.queries.shouldProcess('AuctionHistoryContract', last_tx_uid)){
+        let contractUpdate = {}
+        try{
+            contractUpdate = state_changes_obj[AUCTION_CONTRACT]["S"]
+        }catch (e){}
 
-            let infoContractUpdate
-            try{
-                infoContractUpdate = state_changes_obj[INFO_CONTRACT]["S"]
-            }catch (e){}
+        let infoContractUpdate
+        try{
+            infoContractUpdate = state_changes_obj[INFO_CONTRACT]["S"]
+        }catch (e){}
 
-            for (const uid of Object.keys(contractUpdate || {})){
-                if (uid.length === 64) {
-                    let updateType = determineUpdateType(contractUpdate[uid])
-                    //console.log({updateType})
-                    if (Object.keys(updateProcessors).includes(updateType)) {
-                        await updateProcessors[updateType]({
-                            uid,
-                            update: contractUpdate[uid],
-                            infoContractUpdate,
-                            sender: payload.sender,
-                            tx_uid: last_tx_uid,
-                            timestamp: metadata.timestamp,
-                            loader
-                        })
-                    }
+        for (const uid of Object.keys(contractUpdate || {})){
+            if (uid.length === 64) {
+                let updateType = determineUpdateType(contractUpdate[uid])
+                //console.log({updateType})
+                if (Object.keys(updateProcessors).includes(updateType)) {
+                    await updateProcessors[updateType]({
+                        uid,
+                        update: contractUpdate[uid],
+                        infoContractUpdate,
+                        sender: payload.sender,
+                        timestamp: metadata.timestamp,
+                        loader
+                    })
                 }
             }
-            await db.queries.update_processed('AuctionHistoryContract', last_tx_uid)
         }
+        //doesn't seem important
+        // await db.queries.update_processed('AuctionHistoryContract', last_tx_uid)
+        // }
     }
 
     function determineUpdateType(update){
@@ -85,7 +85,7 @@ export const auctionContractProcessor = (database, socket_server, services) =>{
     }
 
     async function newAuction(args){
-        const { tx_uid, update, timestamp, loader } = args
+        const { update, timestamp, loader } = args
         if (determineUpdateType(update) !== "newAuction") return
         //console.log(util.inspect({newAuction: update}, false, null, true))
 
@@ -114,7 +114,6 @@ export const auctionContractProcessor = (database, socket_server, services) =>{
             paid_to_creator: "0",
             royalty_percent: update.royalty_percent,
             creator: update.creator,
-            last_tx_uid: tx_uid
         })
         //console.log({auction})
         auction.save((err, doc) => {
@@ -126,7 +125,7 @@ export const auctionContractProcessor = (database, socket_server, services) =>{
     }
 
     async function newBid(args){
-        const { uid, tx_uid, update, timestamp, loader} = args
+        const { uid, update, timestamp, loader} = args
         if (determineUpdateType(update) !== "newBid") return
         //console.log(util.inspect({newBid: update}, false, null, true))
 
@@ -142,7 +141,6 @@ export const auctionContractProcessor = (database, socket_server, services) =>{
             bid: current_bid_BN.toString(), bidder: update.current_winner, timestamp: new Date(timestamp * 1000)
         })
         auction.reserve_met = current_bid_BN.isGreaterThanOrEqualTo(new BN(auction.reserve_price))
-        auction.last_tx_uid = tx_uid
 
         auction.save((err, doc) => {
             //console.log({err, doc})
@@ -153,7 +151,7 @@ export const auctionContractProcessor = (database, socket_server, services) =>{
     }
 
     async function endAuction(args){
-        const { uid, tx_uid, update, infoContractUpdate, timestamp, loader } = args
+        const { uid, update, infoContractUpdate, timestamp, loader } = args
         if (determineUpdateType(update) !== "endAuction") return
         //console.log(util.inspect({endAuction: update, uid, infoContractUpdate}, false, null, true))
 
@@ -189,7 +187,6 @@ export const auctionContractProcessor = (database, socket_server, services) =>{
             pixel_frame.owner = new_owner
             pixel_frame.lastSaleDate = new Date(timestamp * 1000)
             pixel_frame.lastUpdate = new Date(timestamp * 1000)
-            pixel_frame.tx_uid = tx_uid
 
             await new db.models.SalesHistory({
                 uid,
@@ -208,7 +205,6 @@ export const auctionContractProcessor = (database, socket_server, services) =>{
         auction.ended_early = ended_date < auction.scheduled_end_date
         auction.ended_early_date = ended_date
         auction.new_owner = new_owner
-        auction.last_tx_uid = tx_uid
 
         auction.save((err, doc) => {
             //console.log({err, doc})

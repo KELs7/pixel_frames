@@ -24,7 +24,6 @@ export const infoContractProcessor = (database, socket_server, services) => {
 
   async function processUpdate(update, loader = false) {
     if (!loader) console.log(util.inspect({ processorName, update }, false, null, true))
-    let last_tx_uid = update.tx_uid
 
     let { state_changes_obj } = update
 
@@ -37,32 +36,32 @@ export const infoContractProcessor = (database, socket_server, services) => {
       auctionContractUpdates = state_changes_obj[AUCTION_CONTRACT]["S"]
     } catch (e) { }
 
-    if (await db.queries.shouldProcess('InfoContractUpdates', last_tx_uid)) {
-      let contractUpdate = {}
-      try {
-        contractUpdate = state_changes_obj[INFO_CONTRACT]["S"]
-      } catch (e) { }
+    // if (await db.queries.shouldProcess('InfoContractUpdates', last_tx_uid)) {
+    let contractUpdate = {}
+    try {
+      contractUpdate = state_changes_obj[INFO_CONTRACT]["S"]
+    } catch (e) { }
 
-      const { names } = contractUpdate
+    const { names } = contractUpdate
 
-      for (const uid of Object.keys(contractUpdate || {})) {
-        if (uid.length === 64) {
-          let updateType = determineUpdateType(contractUpdate[uid])
-          if (Object.keys(updateProcessors).includes(updateType)) {
-            await updateProcessors[updateType]({
-              uid,
-              update: contractUpdate[uid],
-              names,
-              transactionInfo: update.txInfo,
-              auctionContractUpdates: auctionContractUpdates,
-              blockNum: update.blockNum,
-              loader
-            })
-          }
+    for (const uid of Object.keys(contractUpdate || {})) {
+      if (uid.length === 64) {
+        let updateType = determineUpdateType(contractUpdate[uid])
+        if (Object.keys(updateProcessors).includes(updateType)) {
+          await updateProcessors[updateType]({
+            uid,
+            update: contractUpdate[uid],
+            names,
+            transactionInfo: update.txInfo,
+            auctionContractUpdates: auctionContractUpdates,
+            blockNum: update.blockNum,
+            loader
+          })
         }
       }
-      await db.queries.update_processed('InfoContractUpdates', last_tx_uid)
     }
+      // await db.queries.update_processed('InfoContractUpdates', last_tx_uid)
+    // }
   }
 
   function determineUpdateType(update) {
@@ -121,7 +120,6 @@ export const infoContractProcessor = (database, socket_server, services) => {
       stamps_used,
       lastSaleDate: null,
       lastUpdate: new Date(metadata.timestamp * 1000),
-      tx_uid: update.tx_uid,
       blacklist: blacklist.art.includes(uid) || blacklist.creators.includes(update.creator)
     })
     console.log(util.inspect({ thing }, false, null, true))
@@ -177,7 +175,7 @@ export const infoContractProcessor = (database, socket_server, services) => {
   }
 
   async function likeThing(args) {
-    const { uid, tx_uid, update, transactionInfo } = args
+    const { uid, update, transactionInfo } = args
 
     if (determineUpdateType(update) !== "likeThing") return
 
@@ -192,39 +190,36 @@ export const infoContractProcessor = (database, socket_server, services) => {
       console.log("UID doesn't exist")
       return
     }
-    if (pixel_frame.last_likes_tx_uid >= tx_uid) {
-      console.log("Already processed this LIKE tx")
-      return
-    }
+    // if (pixel_frame.last_likes_tx_uid >= tx_uid) {
+      // console.log("Already processed this LIKE tx")
+      // return
+    // }
 
     pixel_frame.likes = update.likes
     pixel_frame.lastUpdate = new Date(metadata.timestamp * 1000)
-    pixel_frame.last_likes_tx_uid = tx_uid
 
     await pixel_frame.save((err, doc) => {
       // console.log({liked: err})
       // console.log({likedDoc: doc})
     })
 
-    await update_uid_likes(uid, sender, tx_uid)
-    await update_user_likes(uid, sender, tx_uid)
+    await update_uid_likes(uid, sender)
+    await update_user_likes(uid, sender)
   }
 
-  const update_uid_likes = async (uid, vk, tx_uid) => {
+  const update_uid_likes = async (uid, vk) => {
     let likes = await db.models.Likes.findOne({ vk })
     if (!likes) {
       likes = await new db.models.Likes({
         uid,
-        last_likes_tx_uid: tx_uid,
         liked_by: [vk]
       })
     } else {
-      if (likes.last_likes_tx_uid >= tx_uid) {
-        console.log("Already processed this LIKE tx")
-        return
-      }
+      // if (likes.last_likes_tx_uid >= tx_uid) {
+      //   console.log("Already processed this LIKE tx")
+      //   return
+      // }
       likes.liked_by.push(vk)
-      likes.last_likes_tx_uid = tx_uid
       likes.isNew = false
     }
 
@@ -234,19 +229,18 @@ export const infoContractProcessor = (database, socket_server, services) => {
     })
   }
 
-  const update_user_likes = async (uid, vk, tx_uid) => {
+  const update_user_likes = async (uid, vk) => {
     let likedByUser = await db.models.LikedByUser.findOne({ vk })
     if (!likedByUser) {
       likedByUser = await new db.models.LikedByUser({
         vk,
-        last_likes_tx_uid: tx_uid,
         likes: [uid]
       })
     } else {
-      if (likedByUser.last_likes_tx_uid >= tx_uid) {
-        console.log("Already processed this LIKE tx")
-        return
-      }
+      // if (likedByUser.last_likes_tx_uid >= tx_uid) {
+      //   console.log("Already processed this LIKE tx")
+      //   return
+      // }
       likedByUser.likes.push(uid)
     }
     await likedByUser.save((err, doc) => {

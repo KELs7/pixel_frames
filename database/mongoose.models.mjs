@@ -37,8 +37,8 @@ var pixelFrame = new mongoose.Schema({
     lastSaleDate: Date,
     lastUpdate: Date,
     blacklist: Boolean,
-    tx_uid: String,
-    last_likes_tx_uid: String
+    // tx_uid: String,
+    // last_likes_tx_uid: String
 });
 
 var likes = new mongoose.Schema({
@@ -48,7 +48,7 @@ var likes = new mongoose.Schema({
         index: true
     },
     liked_by: Array,
-    last_likes_tx_uid: String
+    // last_likes_tx_uid: String
 })
 
 var likedByUser = new mongoose.Schema({
@@ -58,7 +58,7 @@ var likedByUser = new mongoose.Schema({
         index: true
     },
     likes: Array,
-    last_likes_tx_uid: String
+    // last_likes_tx_uid: String
 })
 
 var salesHistory = new mongoose.Schema({
@@ -84,7 +84,7 @@ var processed = {
         required: true,
         index: true
     },
-    last_tx_uid_processed: String
+    // last_tx_uid_processed: String
 }
 
 var auctionHistory = new mongoose.Schema({
@@ -114,7 +114,7 @@ var auctionHistory = new mongoose.Schema({
     paid_to_creator: String,
     royalty_percent: Number,
     creator: String,
-    last_tx_uid: String
+    // last_tx_uid: String
 })
 
 var shareLinks = new mongoose.Schema({

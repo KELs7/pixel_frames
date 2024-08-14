@@ -22,28 +22,26 @@ export async function drop_collections(){
     await db.queries.delete_processed('InfoContractUpdates')
 }
 
-export const loadCollection = (starting_tx_uid = "000000000000.00000.00000", drop=false) => {
+export const loadCollection = () => {
     const blockService = getBlockService(BLOCKSERVICE_URL, BLOCKSERVICE_PORT)
     const processor = infoContractProcessor()
 
     let db
     let done
 
-    async function getUpdates(last_tx_uid){
+    async function getUpdates(){
         return await blockService.getVariableChanges(INFO_CONTRACT, "S", 1)
     }
 
     async function processUpdates(updates){
-        let last_tx_uid
         for (const update of updates){
-            last_tx_uid = update.tx_uid
             await processor.processUpdate(update, true)
         }
-        load(last_tx_uid)
+        load()
     }
 
-    async function load(last_tx_uid){
-        let updates = await getUpdates(last_tx_uid)
+    async function load(){
+        let updates = await getUpdates()
         if (updates.history.length > 0) await processUpdates(updates.history)
         else done()
     }
@@ -53,7 +51,7 @@ export const loadCollection = (starting_tx_uid = "000000000000.00000.00000", dro
         processor.setDb(db)
 
         done = resolver
-        load(starting_tx_uid)
+        load()
     }
 
     const finished = new Promise(startLoading)

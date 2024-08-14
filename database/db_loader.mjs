@@ -12,8 +12,8 @@ process.on('SIGINT', signal => {
     process.kill( process.pid, 'SIGTERM' );
 })
 
-const runLoader = async (loaderList, drop, starting_tx_uid) => {
-    console.log({loaderList, drop, starting_tx_uid})
+const runLoader = async (loaderList, drop) => {
+    console.log({loaderList, drop})
     const loaders = {
         InfoContractLoader,
         AuctionContractLoader,
@@ -53,7 +53,7 @@ const runLoader = async (loaderList, drop, starting_tx_uid) => {
     // Load Collections
     for (const loaderName of loaderList){
         console.log(`Running ${loaderName}...`)
-        let loader =  loaders[loaderName].loadCollection(starting_tx_uid)
+        let loader =  loaders[loaderName].loadCollection()
         await loader.finished
         console.log(`Finished Running ${loaderName}...`)
     }
@@ -61,9 +61,9 @@ const runLoader = async (loaderList, drop, starting_tx_uid) => {
     process.exit(0)
 }
 
-let [loaderList, drop, starting_tx_uid] = process.argv.slice(2)
+let [loaderList, drop] = process.argv.slice(2)
 
 if (drop === "drop") drop = true
 else drop = false
 
-runLoader(loaderList, drop, starting_tx_uid)
+runLoader(loaderList, drop)

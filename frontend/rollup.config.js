@@ -1,4 +1,5 @@
 import path from 'path';
+import nodePolyfills from 'rollup-plugin-polyfill-node';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
@@ -25,6 +26,7 @@ export default {
 		output: config.client.output(),
 		plugins: [
 			replace({
+				'global': 'window',
 				preventAssignment: true,
 				values:{
 					'process.browser': true,
@@ -45,6 +47,9 @@ export default {
 			resolve({
 				browser: true,
 				dedupe: ['svelte']
+			}),
+			nodePolyfills({
+				include: ['buffer/', 'process', 'util']
 			}),
 			commonjs(),
 

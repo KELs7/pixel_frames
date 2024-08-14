@@ -46,7 +46,8 @@
 		let json = await res.json()
 
 		if (!json) return []
-	    return json.data.sort((a, b) => a.last_tx_uid > b.last_tx_uid ? -1 : 1)
+	    // return json.data.sort((a, b) => a.last_tx_uid > b.last_tx_uid ? -1 : 1)
+        return json.data
 
     }
 

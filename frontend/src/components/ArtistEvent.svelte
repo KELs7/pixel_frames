@@ -30,9 +30,9 @@
 		})
 	}
 
-	const sortLastUpdated = (auctionList) => {
-		return auctionList.sort((a, b) => a.last_tx_uid < b.last_tx_uid ? 1 : -1)
-	}
+	// const sortLastUpdated = (auctionList) => {
+	// 	return auctionList.sort((a, b) => a.last_tx_uid < b.last_tx_uid ? 1 : -1)
+	// }
 
 	const removeSold = (artList) => {
 		return artList.filter(f => f.owner === eventInfo.artistVk)
@@ -173,6 +173,6 @@
 
 
 	{#if eventAuctions}
-		<Auctions auctions={sortLastUpdated(eventAuctions)} title={false} showMore={false} />
+		<Auctions auctions={eventAuctions} title={false} showMore={false} />
 	{/if}
 </div>

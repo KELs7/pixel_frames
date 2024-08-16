@@ -1,14 +1,12 @@
 import axios from "axios";
 import util from "util";
 
-export const getBlockService = (url, port) => {
-  const fullURL = `${url}:${port}`;
-
+export const getBlockService = (url) => {
   async function getCurrentKeyValue(contractName, variableName, key) {
     try {
       let endpoint = "abci_query";
       let res = await axios(
-        `${fullURL}/${endpoint}?path=%22/get/${contractName}.${variableName}:${key}%22`
+        `${url}/${endpoint}?path=%22/get/${contractName}.${variableName}:${key}%22`
       );
       return res.data;
     } catch (e) {
@@ -23,7 +21,7 @@ export const getBlockService = (url, port) => {
       `last_tx_uid=${last_tx_uid}`,
       `limit=${limit}`,
     ].join("&");
-    let res = await axios(`${fullURL}/${endpoint}?${query}`).then((res) =>
+    let res = await axios(`${url}/${endpoint}?${query}`).then((res) =>
       res.data()
     );
     //console.log(util.inspect(res.data, false, null, true))
@@ -33,7 +31,7 @@ export const getBlockService = (url, port) => {
   async function getVariableChanges(contractName, variableName, limit = 10) {
     let endpoint = "abci_query";
     let res = await axios(
-      `${fullURL}/${endpoint}?path=%22/state/${contractName}.${variableName}/limit=${limit}/offset=0%22`
+      `${url}/${endpoint}?path=%22/state/${contractName}.${variableName}/limit=${limit}/offset=0%22`
     );
     //console.log(util.inspect(res.data, false, null, true))
     return res.data;
@@ -54,7 +52,7 @@ export const getBlockService = (url, port) => {
       `last_tx_uid=${last_tx_uid}`,
       `limit=${limit}`,
     ].join("&");
-    let res = await axios(`${fullURL}/${endpoint}?${query}`);
+    let res = await axios(`${url}/${endpoint}?${query}`);
     //console.log(util.inspect(res.data, false, null, true))
     return res.data;
   }
@@ -62,7 +60,7 @@ export const getBlockService = (url, port) => {
   async function getTx(tx_hash) {
     let endpoint = `tx`;
 
-    let res = await axios(`${fullURL}/${endpoint}?hash=${tx_hash}`);
+    let res = await axios(`${url}/${endpoint}?hash=${tx_hash}`);
     //console.log(util.inspect(res.data, false, null, true))
     return res.data;
   }

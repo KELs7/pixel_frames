@@ -11,9 +11,8 @@ import util from "util";
 const AUCTION_CONTRACT = process.env.AUCTION_CONTRACT || null
 if (!AUCTION_CONTRACT ) throw Error("Must pass AUCTION_CONTRACT via .env file")
 
-const BLOCKSERVICE_URL = process.env.BLOCKSERVICE_URL || 'http://localhost'
 const BLOCKSERVICE_PORT = process.env.BLOCKSERVICE_PORT || 3535
-
+const BLOCKSERVICE_URL = process.env.BLOCKSERVICE_URL || `http://localhost:${BLOCKSERVICE_PORT}`
 
 export async function drop_collections(){
     let db = await getDatabase()
@@ -22,7 +21,7 @@ export async function drop_collections(){
 }
 
 export const loadCollection = () => {
-    const blockService = getBlockService(BLOCKSERVICE_URL, BLOCKSERVICE_PORT)
+    const blockService = getBlockService(BLOCKSERVICE_URL)
     const processor = auctionContractProcessor()
 
     let db

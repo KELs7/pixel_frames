@@ -6,8 +6,8 @@ import util from "util";
 
 const INFO_CONTRACT = process.env.INFO_CONTRACT || null
 if (!INFO_CONTRACT ) throw Error("Must pass INFO_CONTRACT via .env file")
-const BLOCKSERVICE_URL = process.env.BLOCKSERVICE_URL || 'http://localhost'
 const BLOCKSERVICE_PORT = process.env.BLOCKSERVICE_PORT || 3535
+const BLOCKSERVICE_URL = process.env.BLOCKSERVICE_URL || `http://localhost:${BLOCKSERVICE_PORT}`
 
 import { getDatabase} from "../database.mjs"
 import { getBlockService } from "../../blockserviceAPI/blockservice.mjs"
@@ -19,7 +19,7 @@ export async function drop_collections(){
 }
 
 export const loadCollection = (tx_hash) => {
-    const blockService = getBlockService(BLOCKSERVICE_URL, BLOCKSERVICE_PORT)
+    const blockService = getBlockService(BLOCKSERVICE_URL)
     const processor = infoContractProcessor()
 
     let db

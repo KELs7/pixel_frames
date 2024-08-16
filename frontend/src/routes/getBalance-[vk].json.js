@@ -1,11 +1,9 @@
 export async function get(req, res, next) {
 	const { vk } = req.params;
 
-    let results = await global.blockservice.getCurrentKeyValue('currency', 'balances', vk)
+    let rpcResult = await global.blockservice.getCurrentKeyValue('currency', 'balances', vk)
 
-    results = results?.result?.response
-
-    let { value } = results
+    let value = rpcResult?.result?.response?.value
 
     if (!value) {
         value = "0"

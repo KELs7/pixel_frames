@@ -11,11 +11,11 @@ export const update_stamp_ratio = (models, blockexplorer_url) => {
                         checkAgain()
                         return
                     }
-				    let stampRatio = await models.StampRatio.findOne({symbol: 'TAU'})
+				    let stampRatio = await models.StampRatio.findOne({symbol: 'XIAN'})
 
                     if (!stampRatio){
                         stampRatio = await new models.StampRatio({
-                            symbol: 'TAU',
+                            symbol: 'XIAN',
                         })
                     }
 

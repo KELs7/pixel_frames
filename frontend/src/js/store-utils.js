@@ -1,5 +1,6 @@
 import { get } from "svelte/store";
 import { config } from "./config.js";
+import Xian from "xian-js";
 import { snackbars, currency, userAccount, approvalAmount, showModal } from "./stores.js";
 import { getCurrentKeyValue, toBigNumber } from "./utils.js";
 

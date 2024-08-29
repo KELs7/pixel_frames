@@ -1,7 +1,7 @@
 import { get } from "svelte/store";
 import { config } from "./config.js";
 import { snackbars, currency, userAccount, approvalAmount, showModal } from "./stores.js";
-import { getCurrentKeyValue } from "./utils.js";
+import { getCurrentKeyValue, toBigNumber } from "./utils.js";
 
 export const alreadyLiked = async (uid) => {
     let account = get(userAccount)

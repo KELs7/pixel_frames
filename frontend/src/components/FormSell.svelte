@@ -34,13 +34,15 @@
 	})
 
     const sell = () => {
+		const _price = price;
 		const transaction = {
 			methodName: 'sell_thing',
 			networkType: config.networkType,
 			kwargs: {
 				uid: $showModal.modalData.thingInfo.uid,
-				amount: {"__fixed__": price}
-			}
+				amount: {"__fixed__": _price.toString()}
+			},
+			stampLimit: stampLimits[config.masterContract].sell_thing
 		}
 
 		sendTransaction(transaction, handleSellTx)

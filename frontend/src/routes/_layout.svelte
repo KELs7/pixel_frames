@@ -48,8 +48,6 @@
 		refreshTauPrice()
 		checkForApproval(config.masterContract)
 
-		socket.on('')
-
 		return () => {
 			document.removeEventListener("visibilitychange", setTabActive);
 		}

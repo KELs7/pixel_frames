@@ -2,7 +2,7 @@ import io from 'socket.io-client'
 import { socket_config } from './config'
 
 export const start = () => {
-    let socket = io(`${socket_config.host}${socket_config.port}`)
+    let socket = io(`${socket_config.host}:${socket_config.port}`)
 
     let joinedRooms = {}
 

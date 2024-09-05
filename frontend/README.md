@@ -31,7 +31,7 @@ export const config = {
     infoContract: "con_pw_info_3", // CHANGE
     masterContract: "con_pw_master_3", // CHANGE
     networkType: "testnet", // CHANGE
-    currencySymbol: "DTAU", // CHANGE
+    currencySymbol: "XIAN", // CHANGE
     domainName: "https://localhost", // CHANGE
     //blockExplorer: "http://localhost:1337", // CHANGE
     blockExplorer: "https://testnet.lamden.io", // CHANGE

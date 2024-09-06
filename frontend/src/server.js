@@ -50,5 +50,5 @@ initGlobal().then(() => {
 			if (err) console.log('error', err);
 		});
 
-	socketserver.start(io(server), DATABASE_SERVICE_URL, DATABASE_SERVICE_PORT, BLOCKSERVICE_PORT)
+	socketserver.start(io(server), DATABASE_SERVICE_URL, DATABASE_SERVICE_PORT)
 })

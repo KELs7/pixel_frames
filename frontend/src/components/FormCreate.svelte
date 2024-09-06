@@ -25,7 +25,7 @@
 
 		const transaction = {
 			methodName: 'create_thing',
-			networkType: config.networkType,
+			// networkType: config.networkType,
 			kwargs: {
 				thing_string,
 				description: desc,

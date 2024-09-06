@@ -16,7 +16,7 @@ export const walletInstalled = writable('checking');
 export const walletInfo = writable({});
 export const userAccount = writable("");
 export const autoTx = writable(false);
-export const stampRatio = writable();
+export const stampRatio = writable(50);
 export const auctions = writable([]);
 
 export const snackbars = writable([]);

@@ -101,7 +101,7 @@
 		// 	txResultsHandler.handleTransaction(txResults)
 		// }
 
-		const txResults = await xdu.sendTransaction(contractName, transaction.methodName, transaction.kwargs)
+		const txResults = await xdu.sendTransaction(contractName, transaction.methodName, transaction.kwargs, transaction.stampLimit)
 			.catch(txResultsHandler.handleTransactionError)
 		txResultsHandler.handleTransaction(txResults, callback)
 	}
